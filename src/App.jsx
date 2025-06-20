@@ -1,18 +1,34 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
-import Header from "./components/layout/Header";
-import HeroCarousel from "./components/layout/HeroCarousel";
-import ServicesSection from "./components/common/ServicesSection";
+import Footer from "./components/layout/Footer";
+import HomePage from "./pages/HomePage";
+import ServicesPage from "./pages/ServicesPage";
+import ResidentialPage from "./pages/ResidentialPage";
+import SpecialistPage from "./pages/SpecialistPage";
+import AboutPage from "./pages/AboutPage";
+import CommitmentsPage from "./pages/CommitmentsPage";
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Navbar />
-      <HeroCarousel />
-      <ServicesSection />
+    <Router>
+      <div className="min-h-screen bg-gray-50">
+        <Navbar />
 
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 py-12"></main>
-    </div>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/services/residential" element={<ResidentialPage />} />
+          <Route
+            path="/services/specialist-care"
+            element={<SpecialistPage />}
+          />
+          <Route path="/about/" element={<AboutPage />} />
+          <Route path="/about/commitments/" element={<CommitmentsPage />} />
+        </Routes>
+
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

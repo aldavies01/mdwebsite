@@ -11,7 +11,7 @@ function HeroCarousel() {
       description: "Join our team of dedicated care professionals",
       buttonText: "View Vacancies",
       buttonLink: "/careers/vacancies",
-      bgColor: "bg-primary-navy",
+      bgImage: "/images/hero/hiring.png",
     },
     {
       id: 2,
@@ -19,7 +19,7 @@ function HeroCarousel() {
       description: "Making a difference in our local communities",
       buttonText: "Learn More",
       buttonLink: "/about/community",
-      bgColor: "bg-secondary-teal",
+      bgImage: "/images/hero/training.png",
     },
     {
       id: 3,
@@ -27,7 +27,7 @@ function HeroCarousel() {
       description: "Recognized for excellence in care services",
       buttonText: "View Achievements",
       buttonLink: "/about/values",
-      bgColor: "bg-secondary-coral",
+      bgImage: "/images/company/excellence.png",
     },
   ];
 
@@ -50,15 +50,29 @@ function HeroCarousel() {
         {slides.map((slide, index) => (
           <div
             key={slide.id}
-            className={`w-full h-full flex-shrink-0 ${slide.bgColor}`}
+            className="w-full h-full flex-shrink-0 relative"
+            style={{
+              backgroundImage: `url(${slide.bgImage})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}
           >
-            <div className="relative h-full flex items-center justify-center">
+            {/* Dark overlay for text readability */}
+            <div className="absolute inset-0 bg-black/50"></div>
+
+            {/* Content */}
+            <div className="relative h-full flex items-center justify-center z-10">
               <div className="text-center text-white px-8 max-w-4xl">
-                <h1 className="text-5xl font-bold mb-4">{slide.title}</h1>
-                <p className="text-xl mb-8">{slide.description}</p>
+                <h1 className="text-5xl font-bold mb-4 drop-shadow-lg">
+                  {slide.title}
+                </h1>
+                <p className="text-xl mb-8 drop-shadow-md">
+                  {slide.description}
+                </p>
                 <a
                   href={slide.buttonLink}
-                  className="bg-primary-gold hover:bg-primary-gold/90 text-primary-navy px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105"
+                  className="bg-primary-gold hover:bg-primary-gold/90 text-primary-navy px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg"
                 >
                   {slide.buttonText}
                 </a>
@@ -70,5 +84,4 @@ function HeroCarousel() {
     </div>
   );
 }
-
 export default HeroCarousel;
