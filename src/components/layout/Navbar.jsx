@@ -45,18 +45,25 @@ function Navbar() {
                 onClick={() => handleDropdownClick("about")}
                 className="text-white hover:text-primary-gold transition-all duration-300 font-medium py-2 px-3 rounded-lg hover:bg-white/10 hover:scale-105"
               >
-                About Us
+                About
               </button>
 
               {/* Dropdown Menu */}
               {openDropdown === "about" && (
                 <div className="absolute top-full left-0 mt-3 bg-white/95 backdrop-blur-md shadow-2xl rounded-xl py-3 w-56 border border-gray-200 transform transition-all duration-200 ease-out z-50">
                   <a
-                    href="/about/commitments"
+                    href="/about/"
                     className="block px-5 py-3 text-primary-navy hover:bg-secondary-light-blue/30 hover:text-primary-gold transition-all duration-200 rounded-lg mx-2 hover:translate-x-1"
                   >
-                    Commitments
+                    About Us
                   </a>
+                  <a
+                    href="/about/values"
+                    className="block px-5 py-3 text-primary-navy hover:bg-secondary-light-blue/30 hover:text-primary-gold transition-all duration-200 rounded-lg mx-2 hover:translate-x-1"
+                  >
+                    Our Values
+                  </a>
+
                   <a
                     href="/about/people"
                     className="block px-5 py-3 text-primary-navy hover:bg-secondary-light-blue/30 hover:text-primary-gold transition-all duration-200 rounded-lg mx-2 hover:translate-x-1"
@@ -64,16 +71,16 @@ function Navbar() {
                     Our People
                   </a>
                   <a
+                    href="/about/commitments"
+                    className="block px-5 py-3 text-primary-navy hover:bg-secondary-light-blue/30 hover:text-primary-gold transition-all duration-200 rounded-lg mx-2 hover:translate-x-1"
+                  >
+                    Commitments
+                  </a>
+                  <a
                     href="/about/community"
                     className="block px-5 py-3 text-primary-navy hover:bg-secondary-light-blue/30 hover:text-primary-gold transition-all duration-200 rounded-lg mx-2 hover:translate-x-1"
                   >
                     In the Community
-                  </a>
-                  <a
-                    href="/about/values"
-                    className="block px-5 py-3 text-primary-navy hover:bg-secondary-light-blue/30 hover:text-primary-gold transition-all duration-200 rounded-lg mx-2 hover:translate-x-1"
-                  >
-                    Our Values
                   </a>
                 </div>
               )}
@@ -89,6 +96,12 @@ function Navbar() {
               </button>
               {openDropdown === "services" && (
                 <div className="absolute top-full left-0 mt-3 bg-white/95 backdrop-blur-md shadow-2xl rounded-xl py-3 w-56 border border-gray-200 transform transition-all duration-200 ease-out z-50">
+                  <a
+                    href="/services/"
+                    className="block px-5 py-3 text-primary-navy hover:bg-secondary-light-blue/30 hover:text-primary-gold transition-all duration-200 rounded-lg mx-2 hover:translate-x-1"
+                  >
+                    Our Services
+                  </a>
                   <a
                     href="/services/residential"
                     className="block px-5 py-3 text-primary-navy hover:bg-secondary-light-blue/30 hover:text-primary-gold transition-all duration-200 rounded-lg mx-2 hover:translate-x-1"
@@ -122,10 +135,16 @@ function Navbar() {
               {openDropdown === "careers" && (
                 <div className="absolute top-full left-0 mt-3 bg-white/95 backdrop-blur-md shadow-2xl rounded-xl py-3 w-56 border border-gray-200 transform transition-all duration-200 ease-out z-50">
                   <a
+                    href="/careers/"
+                    className="block px-5 py-3 text-primary-navy hover:bg-secondary-light-blue/30 hover:text-primary-gold transition-all duration-200 rounded-lg mx-2 hover:translate-x-1"
+                  >
+                    Our Careers
+                  </a>
+                  <a
                     href="/careers/vacancies"
                     className="block px-5 py-3 text-primary-navy hover:bg-secondary-light-blue/30 hover:text-primary-gold transition-all duration-200 rounded-lg mx-2 hover:translate-x-1"
                   >
-                    Vacancies
+                    Current Vacancies
                   </a>
                 </div>
               )}

@@ -7,6 +7,9 @@ import ResidentialPage from "./pages/ResidentialPage";
 import SpecialistPage from "./pages/SpecialistPage";
 import AboutPage from "./pages/AboutPage";
 import CommitmentsPage from "./pages/CommitmentsPage";
+import OurPeoplePage from "./pages/OurPeoplePage";
+import ValuesPage from "./pages/ValuesPage";
+import CareersPage from "./pages/CareersPage";
 
 function App() {
   return (
@@ -24,6 +27,9 @@ function App() {
           />
           <Route path="/about/" element={<AboutPage />} />
           <Route path="/about/commitments/" element={<CommitmentsPage />} />
+          <Route path="/about/people/" element={<OurPeoplePage />} />
+          <Route path="/about/values/" element={<ValuesPage />} />
+          <Route path="/careers/" element={<CareersPage />} />
         </Routes>
 
         <Footer />
