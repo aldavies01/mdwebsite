@@ -10,6 +10,8 @@ import CommitmentsPage from "./pages/CommitmentsPage";
 import OurPeoplePage from "./pages/OurPeoplePage";
 import ValuesPage from "./pages/ValuesPage";
 import CareersPage from "./pages/CareersPage";
+import VacanciesPage from "./pages/VacanciesPage";
+import ReferralsPage from "./pages/ReferralsPage";
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
           <Route path="/about/people/" element={<OurPeoplePage />} />
           <Route path="/about/values/" element={<ValuesPage />} />
           <Route path="/careers/" element={<CareersPage />} />
+          <Route path="/careers/vacancies" element={<VacanciesPage />} />
+          <Route path="/referrals" element={<ReferralsPage />} />
         </Routes>
 
         <Footer />
