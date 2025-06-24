@@ -118,7 +118,7 @@ function ServicesSection() {
                   <span className="text-secondary-teal">Services</span>
                 </h2>
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Three specialized service areas designed to meet the unique
+                  Three specialised service areas designed to meet the unique
                   needs of every individual we serve across Wales
                 </p>
               </div>
