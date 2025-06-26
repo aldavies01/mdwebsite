@@ -1,10 +1,14 @@
 import { createClient } from "@supabase/supabase-js";
+import { Resend } from "resend";
 
 // Initialize Supabase client
 const supabase = createClient(
   process.env.SUPABASE_URL,
   process.env.SUPABASE_SERVICE_ROLE_KEY
 );
+
+// Initialize Resend client
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(req, res) {
   // Only allow POST requests
@@ -34,6 +38,20 @@ export default async function handler(req, res) {
     }
 
     console.log("Referral saved successfully:", data);
+
+    // Send email notification
+    try {
+      await resend.emails.send({
+        from: "referrals@resend.dev", // Using Resend's test domain for now
+        to: "andrew.davies@manddcare.co.uk",
+        subject: "New Referral Received",
+        text: `New referral from ${formData.referrer_name} for ${formData.first_name} ${formData.last_name}`,
+      });
+      console.log("Email sent successfully");
+    } catch (emailError) {
+      console.error("Email sending failed:", emailError);
+      // Don't fail the whole request if email fails
+    }
 
     return res.status(200).json({
       success: true,
