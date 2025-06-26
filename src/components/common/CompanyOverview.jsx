@@ -125,7 +125,7 @@ function CompanyOverview() {
               {/* This is where your company photo will go */}
               <div className="absolute inset-0 flex items-center justify-center text-white/50">
                 <img
-                  src="/public/images/company/excellence.png"
+                  src="/images/company/excellence.png"
                   alt="M&D Care team"
                   className="w-full h-full object-cover"
                 />
