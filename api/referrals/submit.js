@@ -43,7 +43,7 @@ export default async function handler(req, res) {
     try {
       await resend.emails.send({
         from: "referrals@resend.dev", // Using Resend's test domain for now
-        to: "andrew.davies@manddcare.co.uk",
+        to: "a.ldavies@hotmail.co.uk",
         subject: "New Referral Received",
         text: `New referral from ${formData.referrer_name} for ${formData.first_name} ${formData.last_name}`,
       });
