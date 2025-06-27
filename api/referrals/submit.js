@@ -21,11 +21,7 @@ export default async function handler(req, res) {
     const formData = req.body;
 
     // Basic validation
-    if (
-      !formData.referrer_name ||
-      !formData.first_name ||
-      !formData.last_name
-    ) {
+    if (!formData.referrer_name || !formData.referrer_email) {
       return res.status(400).json({ error: "Missing required fields" });
     }
 
