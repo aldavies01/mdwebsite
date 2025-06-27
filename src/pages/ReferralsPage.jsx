@@ -63,7 +63,7 @@ function ReferralsPage() {
               </div>
               <div className="flex flex-col sm:flex-row gap-4 mt-8">
                 <a
-                  href="#make-referral"
+                  href="/referrals/form"
                   className="bg-primary-gold text-primary-navy px-8 py-4 rounded-xl font-semibold hover:bg-primary-gold/90 hover:scale-105 transition-all duration-300 shadow-lg text-center"
                 >
                   Make a Referral
