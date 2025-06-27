@@ -41,7 +41,7 @@ export default async function handler(req, res) {
         from: "referrals@resend.dev", // Using Resend's test domain for now
         to: "a.ldavies@hotmail.co.uk",
         subject: "New Referral Received",
-        text: `New referral from ${formData.referrer_name} for ${formData.first_name} ${formData.last_name}`,
+        text: `New referral from ${formData.referrer_name}`,
       });
       console.log("Email sent successfully");
     } catch (emailError) {
