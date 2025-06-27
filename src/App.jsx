@@ -12,6 +12,7 @@ import ValuesPage from "./pages/ValuesPage";
 import CareersPage from "./pages/CareersPage";
 import VacanciesPage from "./pages/VacanciesPage";
 import ReferralFormPage from "./pages/ReferralFormPage";
+import ReferralPage from "./pages/ReferralsPage";
 
 function App() {
   return (
@@ -33,7 +34,8 @@ function App() {
           <Route path="/about/values/" element={<ValuesPage />} />
           <Route path="/careers/" element={<CareersPage />} />
           <Route path="/careers/vacancies" element={<VacanciesPage />} />
-          <Route path="/referrals" element={<ReferralFormPage />} />
+          <Route path="/referrals" element={<ReferralPage />} />
+          <Route path="/referrals/form" element={<ReferralFormPage />} />
         </Routes>
 
         <Footer />
