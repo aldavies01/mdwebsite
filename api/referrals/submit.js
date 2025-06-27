@@ -25,8 +25,20 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "Missing required fields" });
     }
 
+    // Clean the data - convert empty strings to null for database
+    const cleanedData = {};
+    for (const [key, value] of Object.entries(formData)) {
+      if (value === "" || value === false) {
+        cleanedData[key] = null;
+      } else {
+        cleanedData[key] = value;
+      }
+    }
+
     // Save to database
-    const { data, error } = await supabase.from("referrals").insert([formData]);
+    const { data, error } = await supabase
+      .from("referrals")
+      .insert([cleanedData]);
 
     if (error) {
       console.error("Database error:", error);
