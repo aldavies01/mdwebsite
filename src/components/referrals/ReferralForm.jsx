@@ -36,12 +36,6 @@ function ReferralForm() {
 
     if (!formData.referrer_name.trim()) newErrors.referrer_name = "Required";
     if (!formData.referrer_email.trim()) newErrors.referrer_email = "Required";
-    if (!formData.first_name.trim()) newErrors.first_name = "Required";
-    if (!formData.last_name.trim()) newErrors.last_name = "Required";
-    if (!formData.primary_needs.trim()) newErrors.primary_needs = "Required";
-    if (!formData.consent_given) newErrors.consent_given = "Consent required";
-    if (!formData.data_consent)
-      newErrors.data_consent = "Data consent required";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
