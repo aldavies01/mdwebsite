@@ -63,6 +63,8 @@ function ReferralForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    console.log("submitted");
+
     if (!validateForm()) return;
 
     setIsSubmitting(true);
