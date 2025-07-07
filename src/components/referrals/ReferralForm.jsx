@@ -227,6 +227,86 @@ function ReferralForm() {
                 </div>
               </div>
             </div>
+            {/* Individual Being Referred Section */}
+            <div className="mb-8">
+              <h2 className="text-xl font-bold text-primary-navy mb-4 border-b border-gray-200 pb-2">
+                Individual Being Referred
+              </h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    First Name *
+                  </label>
+                  <input
+                    type="text"
+                    name="first_name"
+                    value={formData.first_name}
+                    onChange={handleChange}
+                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-navy ${
+                      errors.first_name ? "border-red-500" : "border-gray-300"
+                    }`}
+                    required
+                  />
+                  {errors.first_name && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.first_name}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Last Name *
+                  </label>
+                  <input
+                    type="text"
+                    name="last_name"
+                    value={formData.last_name}
+                    onChange={handleChange}
+                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-navy ${
+                      errors.last_name ? "border-red-500" : "border-gray-300"
+                    }`}
+                    required
+                  />
+                  {errors.last_name && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.last_name}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Date of Birth
+                  </label>
+                  <input
+                    type="date"
+                    name="date_of_birth"
+                    value={formData.date_of_birth}
+                    onChange={handleChange}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-navy"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Gender
+                  </label>
+                  <select
+                    name="gender"
+                    value={formData.gender}
+                    onChange={handleChange}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-navy"
+                  >
+                    <option value="">Select...</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="non-binary">Non-binary</option>
+                    <option value="prefer-not-to-say">Prefer not to say</option>
+                  </select>
+                </div>
+              </div>
+            </div>
 
             {/* Submit Button */}
             <div className="border-t border-gray-200 pt-6">
