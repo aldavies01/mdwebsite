@@ -35,18 +35,7 @@ function App() {
           <Route path="/careers/" element={<CareersPage />} />
           <Route path="/careers/vacancies" element={<VacanciesPage />} />
           <Route path="/referrals" element={<ReferralPage />} />
-
-          {/* Debug route */}
-          <Route
-            path="/referrals/form"
-            element={<div>FORM ROUTE MATCHED!</div>}
-          />
-
-          {/* Catch-all route for debugging */}
-          <Route
-            path="*"
-            element={<div>No route matched: {window.location.pathname}</div>}
-          />
+          <Route path="/referrals/form/" element={<ReferralFormPage />} />
         </Routes>
 
         <Footer />
