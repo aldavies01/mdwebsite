@@ -1,0 +1,48 @@
+{
+  "brand": "M&D Care",
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "about_us": "About Us",
+    "values": "Our Values",
+    "people": "Our People",
+    "learning_dev": "Learning & Development",
+    "commitments": "Commitments",
+    "community": "In the Community",
+    "awards": "Awards",
+    "services": "Services",
+    "our_services": "Our Services",
+    "residential": "Residential",
+    "specialist": "Specialist Care",
+    "supported_living": "Supported Living",
+    "pbs": "Positive Behaviour Support",
+    "new_developments": "New Developments",
+    "careers": "Careers",
+    "our_careers": "Our Careers",
+    "vacancies": "Current Vacancies",
+    "referrals": "Referrals",
+    "contact": "Contact Us",
+    "language": "Language",
+    "news": "News",
+    "benefits": "Benefits"
+  },
+  "home": {
+    "hero_carousel": {
+      "slide1": {
+        "title": "We're hiring",
+        "description": "Join our team of dedicated care professionals",
+        "button": "View Vacancies"
+      },
+      "slide2": {
+        "title": "M&D Care in the community",
+        "description": "Making a difference in our local communities",
+        "button": "Learn More"
+      },
+      "slide3": {
+        "title": "Our awards",
+        "description": "Recognized for excellence in care services",
+        "button": "View Achievements"
+      }
+    }
+  }
+}

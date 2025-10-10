@@ -1,0 +1,47 @@
+{
+  "brand": "M&D Care",
+  "nav": {
+    "home": "Hafan",
+    "about": "Amdanom ni",
+    "about_us": "Amdanom Ni",
+    "values": "Ein Gwerthoedd",
+    "people": "Ein Pobl",
+    "learning_dev": "Dysgu a Datblygu",
+    "commitments": "Ymrwymiadau",
+    "community": "Yn y Gymuned",
+    "awards": "Gwobrau",
+    "services": "Gwasanaethau",
+    "our_services": "Ein Gwasanaethau",
+    "residential": "Cartrefi gofal preswyl",
+    "specialist": "Gofal Arbenigol",
+    "supported_living": "Cartrefi Byw â Chefnogaeth",
+    "pbs": "Cefnogaeth Ymddygiad Cadarnhaol",
+    "new_developments": "Datblygiadau Newydd",
+    "careers": "Gyrfaoedd",
+    "our_careers": "Ein Gyrfaoedd",
+    "vacancies": "Swyddi Gwag Presennol",
+    "referrals": "Atgyfeiriadau",
+    "contact": "Cysylltu â Ni",
+    "language": "Iaith",
+    "news": "Newyddion"
+  },
+  "home": {
+    "hero_carousel": {
+      "slide1": {
+        "title": "Rydym yn recriwtio",
+        "description": "Ymunwch â’n tîm o weithwyr gofal ymroddedig",
+        "button": "Gweld Swyddi"
+      },
+      "slide2": {
+        "title": "M&D Care yn y gymuned",
+        "description": "Gwneud gwahaniaeth yn ein cymunedau lleol",
+        "button": "Dysgu Rhagor"
+      },
+      "slide3": {
+        "title": "Ein gwobrau",
+        "description": "Wedi’n cydnabod am ragoriaeth mewn gwasanaethau gofal",
+        "button": "Gweld Cyflawniadau"
+      }
+    }
+  }
+}
