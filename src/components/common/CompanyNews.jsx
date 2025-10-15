@@ -30,7 +30,7 @@ function CompanyNews() {
           title: item.fields.title,
           excerpt: item.fields.excerpt,
           image: item.fields.coverImage?.fields?.file?.url,
-          link: `/news/${item.fields.slug}`,
+          link: `/about/news/${item.fields.slug}`,
         }));
         setNewsItems(mappedArticles);
       })
@@ -227,7 +227,7 @@ function CompanyNews() {
                   </button>
                 </div>
                 <a
-                  href="/news"
+                  href="/about/news"
                   className="bg-primary-navy text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary-navy/90 transition-all duration-300 shadow-md"
                 >
                   View All
@@ -289,7 +289,7 @@ function CompanyNews() {
                 ))}
               </div>
               <a
-                href="/news"
+                href="/about/news"
                 className="bg-primary-navy text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary-navy/90 hover:scale-105 transition-all duration-300 shadow-lg"
               >
                 View All News

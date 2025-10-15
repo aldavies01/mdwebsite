@@ -1,4 +1,5 @@
 export default function AwardPill({ item }) {
+  // NOTE: If Tailwind purges dynamic classes, consider mapping color -> class strings.
   return (
     <div className="group flex flex-col gap-3 bg-white rounded-2xl p-4 sm:p-5 border border-gray-100 shadow-sm hover:shadow-md transition-all">
       <div className="flex items-center justify-between">

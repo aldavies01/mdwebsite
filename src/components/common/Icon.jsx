@@ -45,6 +45,36 @@ const icons = {
       <path d="M14 8h6v6" />
     </Svg>
   ),
+  car: (className) => (
+    <Svg className={className}>
+      <path d="M3 13l2-6a2 2 0 012-1h10a2 2 0 012 1l2 6" />
+      <path d="M5 13h14" />
+      <circle cx="7" cy="17" r="2" />
+      <circle cx="17" cy="17" r="2" />
+    </Svg>
+  ),
+
+  wifi: (className) => (
+    <Svg className={className}>
+      <path d="M5 12a11 11 0 0114 0" />
+      <path d="M8.5 15.5a6 6 0 017 0" />
+      <path d="M12 19h.01" />
+    </Svg>
+  ),
+
+  tv: (className) => (
+    <Svg className={className}>
+      <rect x="2" y="5" width="20" height="14" rx="2" />
+      <path d="M8 5l4-3 4 3" />
+    </Svg>
+  ),
+
+  leaf: (className) => (
+    <Svg className={className}>
+      <path d="M5 21c8 0 14-6 14-14V5h-2C9 5 3 11 3 19v2h2z" />
+    </Svg>
+  ),
+
   "shield-check": (className) => (
     <Svg className={className}>
       <path d="M12 2l7 3v6c0 5.25-3.75 9.75-7 11-3.25-1.25-7-5.75-7-11V5l7-3z" />
@@ -118,6 +148,7 @@ const icons = {
       />
     </Svg>
   ),
+
   "map-pin": (className) => (
     <Svg className={className}>
       <path d="M12 22s7-6.11 7-11a7 7 0 10-14 0c0 4.89 7 11 7 11z" />

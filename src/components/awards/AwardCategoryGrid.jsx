@@ -1,4 +1,4 @@
-import AwardPill from "./AwardsPill";
+import AwardPill from "./AwardPill";
 
 export default function AwardCategoryGrid({ categories = [] }) {
   return (

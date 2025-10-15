@@ -1,6 +1,7 @@
 import { useMemo, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import CIWWidget from "../CIW/CIWWidget";
+import Icon from "../common/Icon";
 
 function ratingBadgeClasses(rating) {
   switch (rating) {
@@ -13,6 +14,135 @@ function ratingBadgeClasses(rating) {
     default:
       return "bg-gray-600 text-white";
   }
+}
+function getFeatureIcon(featureLabel = "") {
+  const f = featureLabel.toLowerCase();
+
+  // Transport & Access
+  if (f.includes("public transport") || f.includes("transport link"))
+    return "map-pin";
+  if (
+    f.includes("shared car") ||
+    f.includes("vehicle") ||
+    f.includes("access to shared")
+  )
+    return "car";
+
+  // Building Layout
+  if (
+    f.includes("ground floor") ||
+    f.includes("upper level") ||
+    f.includes("upper-level") ||
+    f.includes("accommodation")
+  )
+    return "building";
+
+  // Communal Spaces
+  if (f.includes("communal")) return "users";
+  if (f.includes("sensory")) return "smile";
+
+  // Room Amenities
+  if (
+    f.includes("bathroom") ||
+    f.includes("wetroom") ||
+    f.includes("en-suite") ||
+    f.includes("ensuite")
+  )
+    return "check-circle";
+  if (f.includes("phone")) return "phone";
+  if (f.includes("television") || f.includes("tv")) return "tv";
+  if (f.includes("internet") || f.includes("wifi")) return "wifi";
+
+  // Outdoor & Garden
+  if (
+    f.includes("garden") ||
+    f.includes("outdoor") ||
+    f.includes("sports facilities") ||
+    f.includes("enclosed")
+  )
+    return "leaf";
+
+  // Kitchen & Meals
+  if (f.includes("kitchen") || f.includes("adl") || f.includes("meal"))
+    return "house";
+
+  // Health & Medical
+  if (f.includes("gp") || f.includes("surgery") || f.includes("health"))
+    return "stethoscope";
+
+  // Special Policies
+  if (f.includes("smoking")) return "bolt";
+  if (f.includes("adaptable") || f.includes("specific needs")) return "sliders";
+
+  // Location Features
+  if (f.includes("coastal") || f.includes("sea view") || f.includes("seaside"))
+    return "map";
+  if (f.includes("country") || f.includes("peaceful") || f.includes("calming"))
+    return "leaf";
+
+  // Default - still check-circle but fewer will hit this now
+  return "check-circle";
+}
+
+// Name-based icon inference with optional per-activity override
+function getActivityIcon(activity) {
+  // If activity provides an explicit icon key, use it
+  if (activity?.icon) return activity.icon;
+
+  const name = (activity?.name || "").toLowerCase();
+
+  // Heuristics — tweak as you like
+  if (
+    name.includes("community") ||
+    name.includes("outings") ||
+    name.includes("access")
+  )
+    return "map-pin";
+  if (
+    name.includes("independent") ||
+    name.includes("daily living") ||
+    name.includes("life")
+  )
+    return "house";
+  if (
+    name.includes("creative") ||
+    name.includes("art") ||
+    name.includes("craft")
+  )
+    return "gift";
+  if (
+    name.includes("meal") ||
+    name.includes("cooking") ||
+    name.includes("kitchen")
+  )
+    return "users";
+  if (
+    name.includes("health") ||
+    name.includes("wellbeing") ||
+    name.includes("mindfulness")
+  )
+    return "smile";
+  if (
+    name.includes("social") ||
+    name.includes("celebration") ||
+    name.includes("event")
+  )
+    return "party-popper";
+  if (
+    name.includes("skills") ||
+    name.includes("learning") ||
+    name.includes("training")
+  )
+    return "graduation-cap";
+  if (
+    name.includes("garden") ||
+    name.includes("outdoor") ||
+    name.includes("nature")
+  )
+    return "leaf"; // not in Icon.jsx yet
+
+  // Generic default (present in Icon.jsx)
+  return "activity";
 }
 
 export default function ServiceDetailPage({ slug, detailsMap }) {
@@ -80,20 +210,20 @@ export default function ServiceDetailPage({ slug, detailsMap }) {
   // Build tabs dynamically. If CIW widget exists, we replace Testimonials with Ratings.
   const TABS = useMemo(() => {
     const base = [
-      { id: "overview", label: "Overview", icon: "🏠" },
-      { id: "facilities", label: "Facilities", icon: "🏗️" },
-      { id: "team", label: "Our Team", icon: "👥" },
-      { id: "activities", label: "Activities", icon: "🎨" },
+      { id: "overview", label: "Overview", icon: "home" },
+      { id: "facilities", label: "Facilities", icon: "building" },
+      // { id: "team", label: "Our Team", icon: "users" },
+      { id: "activities", label: "Activities", icon: "calendar" },
     ];
 
     if (hasCIWWidget) {
       base.push({
         id: "ratings",
         label: `${regulatorRatingLabel} Ratings`,
-        icon: "✅",
+        icon: "star",
       });
     } else {
-      base.push({ id: "testimonials", label: "Testimonials", icon: "💬" });
+      base.push({ id: "testimonials", label: "Testimonials", icon: "heart" });
     }
 
     return base;
@@ -248,7 +378,7 @@ export default function ServiceDetailPage({ slug, detailsMap }) {
       </section>
 
       {/* Sticky Tabs */}
-      <section className="bg-white shadow-sm sticky top-0 z-40">
+      <section className="bg-white shadow-sm sticky top-0 z-40 border-b border-gray-200/60">
         <div className="max-w-7xl mx-auto px-6">
           <div
             className="flex overflow-x-auto"
@@ -261,13 +391,13 @@ export default function ServiceDetailPage({ slug, detailsMap }) {
                 onClick={() => setActiveTab(tab.id)}
                 role="tab"
                 aria-selected={activeTab === tab.id}
-                className={`flex items-center gap-2 px-6 py-4 font-semibold whitespace-nowrap border-b-2 transition-all duration-300 ${
+                className={`flex items-center gap-2.5 px-6 py-4 font-medium whitespace-nowrap border-b-2 transition-all duration-300 ${
                   activeTab === tab.id
                     ? "border-secondary-coral text-secondary-coral"
-                    : "border-transparent text-gray-600 hover:text-secondary-coral"
+                    : "border-transparent text-gray-600 hover:text-secondary-coral hover:border-gray-200"
                 }`}
               >
-                <span aria-hidden>{tab.icon}</span>
+                <Icon name={tab.icon} className="w-4 h-4" />
                 {tab.label}
               </button>
             ))}
@@ -276,7 +406,7 @@ export default function ServiceDetailPage({ slug, detailsMap }) {
       </section>
 
       {/* Panels */}
-      <section className="py-12">
+      <section className="py-20 bg-gradient-to-b from-white to-gray-50/30">
         <div className="max-w-7xl mx-auto px-6">
           {activeTab === "overview" && (
             <OverviewPanel
@@ -292,7 +422,7 @@ export default function ServiceDetailPage({ slug, detailsMap }) {
             <FacilitiesPanel features={features} />
           )}
 
-          {activeTab === "team" && <TeamPanel staff={staff} />}
+          {/* {activeTab === "team" && <TeamPanel staff={staff} />} */}
 
           {activeTab === "activities" && (
             <ActivitiesPanel activities={activities} />
@@ -430,12 +560,12 @@ function OverviewPanel({
 
 function FacilitiesPanel({ features = [] }) {
   return (
-    <div className="space-y-12">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl font-bold text-primary-navy mb-4">
+    <div className="space-y-16">
+      <div className="text-center">
+        <h2 className="text-3xl font-bold text-primary-navy tracking-tight">
           Our Facilities
         </h2>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+        <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-3">
           Explore our comfortable, well-equipped facilities designed to provide
           a homely environment for all residents.
         </p>
@@ -448,104 +578,27 @@ function FacilitiesPanel({ features = [] }) {
         ).map((feature, i) => (
           <div
             key={`${feature}-${i}`}
-            className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300"
+            className="group relative bg-white rounded-3xl p-7 border border-gray-200/60 hover:border-gray-300 transition-all duration-500 hover:-translate-y-1"
           >
-            <div className="w-12 h-12 bg-secondary-coral/10 rounded-xl flex items-center justify-center mb-4">
-              <svg
-                className="w-6 h-6 text-secondary-coral"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                aria-hidden
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clipRule="evenodd"
+            {/* Subtle gradient overlay on hover */}
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-secondary-coral/0 via-secondary-teal/0 to-secondary-purple/0 group-hover:from-secondary-coral/5 group-hover:via-secondary-teal/5 group-hover:to-secondary-purple/5 transition-all duration-500" />
+
+            <div className="relative">
+              {/* Icon container */}
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-secondary-coral/10 to-secondary-teal/10 mb-5 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+                <Icon
+                  name={getFeatureIcon(feature)}
+                  className="w-6 h-6 text-secondary-coral"
                 />
-              </svg>
-            </div>
-            <h3 className="text-lg font-semibold text-primary-navy mb-2">
-              {feature}
-            </h3>
-            <p className="text-gray-600 text-sm">
-              Professional support ensuring the highest quality of care and
-              comfort.
-            </p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function TeamPanel({ staff = [] }) {
-  if (!staff.length) {
-    return (
-      <div className="text-center text-gray-600">
-        Team information will be added soon.
-      </div>
-    );
-  }
-  return (
-    <div className="space-y-12">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl font-bold text-primary-navy mb-4">
-          Meet Our Team
-        </h2>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-          Our dedicated team of qualified professionals is committed to
-          providing exceptional care with compassion and expertise.
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        {staff.map((member, i) => (
-          <div
-            key={`${member?.name ?? "member"}-${i}`}
-            className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
-          >
-            <div className="h-48 bg-gradient-to-br from-secondary-coral to-secondary-purple" />
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-primary-navy mb-2">
-                {member?.name}
-              </h3>
-              {member?.role && (
-                <p className="text-secondary-coral font-semibold mb-3">
-                  {member.role}
-                </p>
-              )}
-              <div className="space-y-2 text-sm text-gray-600">
-                {member?.qualifications && (
-                  <div className="flex items-center gap-2">
-                    <svg
-                      className="w-4 h-4 text-secondary-teal"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      aria-hidden
-                    >
-                      <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0z" />
-                    </svg>
-                    <span>{member.qualifications}</span>
-                  </div>
-                )}
-                {member?.experience && (
-                  <div className="flex items-center gap-2">
-                    <svg
-                      className="w-4 h-4 text-secondary-teal"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      aria-hidden
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    <span>{member.experience} experience</span>
-                  </div>
-                )}
               </div>
+
+              <h3 className="text-lg font-semibold text-primary-navy mb-3 leading-snug">
+                {feature}
+              </h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                Professional support ensuring the highest quality of care and
+                comfort.
+              </p>
             </div>
           </div>
         ))}
@@ -553,6 +606,81 @@ function TeamPanel({ staff = [] }) {
     </div>
   );
 }
+// function TeamPanel({ staff = [] }) {
+//   if (!staff.length) {
+//     return (
+//       <div className="text-center text-gray-600">
+//         Team information will be added soon.
+//       </div>
+//     );
+//   }
+//   return (
+//     <div className="space-y-12">
+//       <div className="text-center mb-12">
+//         <h2 className="text-3xl font-bold text-primary-navy mb-4">
+//           Meet Our Team
+//         </h2>
+//         <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+//           Our dedicated team of qualified professionals is committed to
+//           providing exceptional care with compassion and expertise.
+//         </p>
+//       </div>
+
+//       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+//         {staff.map((member, i) => (
+//           <div
+//             key={`${member?.name ?? "member"}-${i}`}
+//             className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+//           >
+//             <div className="h-48 bg-gradient-to-br from-secondary-coral to-secondary-purple" />
+//             <div className="p-6">
+//               <h3 className="text-xl font-bold text-primary-navy mb-2">
+//                 {member?.name}
+//               </h3>
+//               {member?.role && (
+//                 <p className="text-secondary-coral font-semibold mb-3">
+//                   {member.role}
+//                 </p>
+//               )}
+//               <div className="space-y-2 text-sm text-gray-600">
+//                 {member?.qualifications && (
+//                   <div className="flex items-center gap-2">
+//                     <svg
+//                       className="w-4 h-4 text-secondary-teal"
+//                       fill="currentColor"
+//                       viewBox="0 0 20 20"
+//                       aria-hidden
+//                     >
+//                       <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0z" />
+//                     </svg>
+//                     <span>{member.qualifications}</span>
+//                   </div>
+//                 )}
+//                 {member?.experience && (
+//                   <div className="flex items-center gap-2">
+//                     <svg
+//                       className="w-4 h-4 text-secondary-teal"
+//                       fill="currentColor"
+//                       viewBox="0 0 20 20"
+//                       aria-hidden
+//                     >
+//                       <path
+//                         fillRule="evenodd"
+//                         d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+//                         clipRule="evenodd"
+//                       />
+//                     </svg>
+//                     <span>{member.experience} experience</span>
+//                   </div>
+//                 )}
+//               </div>
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// }
 
 function ActivitiesPanel({ activities = [] }) {
   if (!activities.length) {
@@ -562,58 +690,80 @@ function ActivitiesPanel({ activities = [] }) {
       </div>
     );
   }
+
   return (
-    <div className="space-y-12">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl font-bold text-primary-navy mb-4">
+    <div className="space-y-16">
+      <div className="text-center">
+        <h2 className="text-3xl font-bold text-primary-navy tracking-tight">
           Daily Activities & Programs
         </h2>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-          We offer a rich variety of activities designed to promote wellbeing,
-          social connection, and personal fulfillment.
+        <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-3">
+          Practical, social, and creative options that support independence and
+          wellbeing.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {activities.map((activity, i) => (
           <div
             key={`${activity?.name ?? "activity"}-${i}`}
-            className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 hover:scale-105"
+            className="group relative bg-white rounded-3xl p-7 border border-gray-200/60 hover:border-gray-300 transition-all duration-500 hover:-translate-y-1"
           >
-            <div className="w-16 h-16 bg-gradient-to-br from-secondary-coral to-secondary-purple rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg
-                className="w-8 h-8 text-white"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                aria-hidden
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z"
-                  clipRule="evenodd"
+            {/* Subtle gradient overlay on hover */}
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-secondary-coral/0 via-secondary-teal/0 to-secondary-purple/0 group-hover:from-secondary-coral/5 group-hover:via-secondary-teal/5 group-hover:to-secondary-purple/5 transition-all duration-500" />
+
+            <div className="relative">
+              {/* Icon container with softer styling */}
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-secondary-coral/10 to-secondary-teal/10 mb-5 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+                <Icon
+                  name={getActivityIcon(activity)}
+                  className="w-6 h-6 text-secondary-coral"
                 />
-              </svg>
+              </div>
+
+              <h3 className="font-semibold text-primary-navy text-lg mb-3 leading-snug">
+                {activity?.name}
+              </h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                {activity?.description}
+              </p>
+
+              {/* Minimal badge instead of bottom accent */}
+              <div className="mt-6 pt-5 border-t border-gray-100">
+                <div className="inline-flex items-center gap-2 text-xs text-gray-500">
+                  <div className="w-1.5 h-1.5 rounded-full bg-secondary-coral/60" />
+                  <span>Inclusive & person-centred</span>
+                </div>
+              </div>
             </div>
-            <h3 className="font-semibold text-primary-navy mb-3 text-center">
-              {activity?.name}
-            </h3>
-            <p className="text-sm text-gray-600 text-center leading-relaxed">
-              {activity?.description}
-            </p>
           </div>
         ))}
       </div>
 
-      <div className="bg-secondary-coral/5 rounded-2xl p-8 text-center">
-        <h3 className="text-2xl font-bold text-primary-navy mb-4">
-          Personalised Activity Plans
-        </h3>
-        <p className="text-gray-600 max-w-3xl mx-auto">
-          Every resident has a personalised activity plan developed based on
-          their interests, abilities, and preferences. Our activities
-          coordinator works closely with residents and families to ensure
-          meaningful engagement every day.
-        </p>
+      <div className="max-w-3xl mx-auto">
+        <div className="relative rounded-3xl p-10 text-center border border-gray-200/60 bg-gradient-to-br from-gray-50/50 to-white overflow-hidden">
+          {/* Subtle background pattern */}
+          <div
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage: `radial-gradient(circle at 1px 1px, rgb(0 0 0) 1px, transparent 0)`,
+              backgroundSize: "24px 24px",
+            }}
+          />
+
+          <div className="relative">
+            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-secondary-coral/10 to-secondary-teal/10 mx-auto mb-5 flex items-center justify-center">
+              <Icon name="lightbulb" className="w-6 h-6 text-secondary-coral" />
+            </div>
+            <h3 className="text-2xl font-bold text-primary-navy mb-3">
+              Personalised Activity Plans
+            </h3>
+            <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
+              We shape activities around interests and goals, adapting support
+              so everyone can take part confidently.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -627,68 +777,105 @@ function TestimonialsPanel({ name, testimonials = [] }) {
       </div>
     );
   }
+
   return (
-    <div className="space-y-12">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl font-bold text-primary-navy mb-4">
-          What Families Say
+    <div className="space-y-16">
+      <div className="text-center">
+        <h2 className="text-3xl font-bold text-primary-navy tracking-tight">
+          What People Say
         </h2>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-          Don't just take our word for it — hear from the families and residents
-          who call {name} home.
+        <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-3">
+          Honest feedback from residents, families, staff, and professionals.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        {testimonials.map((t, i) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        {testimonials.map((t, i) => {
+          const initial = t?.author?.[0] ?? t?.relationship?.[0] ?? "★";
+          return (
+            <div
+              key={`${t?.text?.slice(0, 24) ?? "t"}-${i}`}
+              className="group relative bg-white rounded-3xl p-8 border border-gray-200/60 hover:border-gray-300 transition-all duration-500 hover:-translate-y-1"
+            >
+              {/* Subtle gradient overlay on hover */}
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-secondary-coral/0 via-secondary-teal/0 to-secondary-purple/0 group-hover:from-secondary-coral/5 group-hover:via-secondary-teal/5 group-hover:to-secondary-purple/5 transition-all duration-500" />
+
+              <div className="relative">
+                {/* Minimalist quote mark */}
+                <div className="mb-6">
+                  <svg
+                    className="w-8 h-8 text-secondary-coral/20"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                  </svg>
+                </div>
+
+                <p className="text-gray-700 text-base leading-relaxed mb-8">
+                  {t?.text}
+                </p>
+
+                <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
+                  <div className="w-11 h-11 rounded-full bg-gradient-to-br from-secondary-coral/10 to-secondary-teal/10 text-secondary-coral flex items-center justify-center font-semibold text-sm">
+                    {initial}
+                  </div>
+                  <div>
+                    {t?.author && (
+                      <p className="text-sm font-semibold text-primary-navy">
+                        {t.author}
+                      </p>
+                    )}
+                    <p className="text-xs text-gray-500 mt-0.5">
+                      {t?.relationship}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="max-w-2xl mx-auto">
+        <div className="relative rounded-3xl p-10 text-center border border-gray-200/60 bg-gradient-to-br from-gray-50/50 to-white overflow-hidden">
+          {/* Subtle background pattern */}
           <div
-            key={`${t?.author ?? "t"}-${i}`}
-            className="bg-white rounded-2xl shadow-lg p-8 relative"
-          >
-            <div className="absolute -top-4 -left-4 w-8 h-8 bg-secondary-coral rounded-full flex items-center justify-center">
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage: `radial-gradient(circle at 1px 1px, rgb(0 0 0) 1px, transparent 0)`,
+              backgroundSize: "24px 24px",
+            }}
+          />
+
+          <div className="relative">
+            <h3 className="text-2xl font-bold text-primary-navy mb-3">
+              Share Your Experience
+            </h3>
+            <p className="text-gray-600 mb-8 max-w-md mx-auto">
+              Your feedback helps us keep improving {name}.
+            </p>
+            <a
+              href="/feedback"
+              className="inline-flex items-center gap-2 bg-primary-navy text-white px-7 py-3.5 rounded-full font-medium hover:bg-primary-navy/90 transition-all duration-300 hover:gap-3 shadow-sm hover:shadow-md"
+            >
+              <span>Leave a Review</span>
               <svg
-                className="w-4 h-4 text-white"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                aria-hidden
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
                 <path
-                  fillRule="evenodd"
-                  d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 10-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L4.414 10H17a1 1 0 100-2H4.414l1.879-1.293z"
-                  clipRule="evenodd"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
                 />
               </svg>
-            </div>
-            <p className="text-gray-600 italic mb-6 text-lg leading-relaxed">
-              "{t?.text}"
-            </p>
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-secondary-coral to-secondary-purple rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-lg">
-                  {t?.author?.[0] ?? "?"}
-                </span>
-              </div>
-              <div>
-                <p className="font-semibold text-primary-navy">{t?.author}</p>
-                <p className="text-sm text-gray-500">{t?.relationship}</p>
-              </div>
-            </div>
+            </a>
           </div>
-        ))}
-      </div>
-
-      <div className="bg-primary-navy text-white rounded-2xl p-8 text-center">
-        <h3 className="text-2xl font-bold mb-4">Share Your Experience</h3>
-        <p className="text-white/90 mb-6">
-          We'd love to hear about your experience with {name}. Your feedback
-          helps us continue to improve our services.
-        </p>
-        <a
-          href="/feedback"
-          className="inline-block bg-primary-gold text-primary-navy px-6 py-3 rounded-xl font-semibold hover:bg-primary-gold/90 transition-all duration-300"
-        >
-          Leave a Review
-        </a>
+        </div>
       </div>
     </div>
   );

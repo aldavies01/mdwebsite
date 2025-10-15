@@ -57,17 +57,17 @@
 export const awardCategories = [
   {
     id: "national",
-    title: "National Recognition",
+    title: "Great British Care Awards",
     description:
       "Celebrating our success at major UK care industry awards that highlight excellence in service delivery and leadership.",
     awards: [
       {
-        title: "British Care Awards",
+        title: "Ynystawe Lodge - Best Care Home Team",
         year: "2022",
         achievement: "Winner",
         description:
           "Recognised nationally for excellence in social care and leadership across multiple categories.",
-        image: "/images/awards/british-care-award.jpg",
+        image: "/images/awards/bestcareteam.jpg",
         color: "primary-gold",
       },
       {
@@ -76,7 +76,7 @@ export const awardCategories = [
         achievement: "Winner",
         description:
           "Awarded for our outstanding commitment to staff development, wellbeing, and workplace culture.",
-        image: "/images/awards/employer-of-year.jpg",
+        image: "/images/awards/awards-2.jpeg",
         color: "secondary-coral",
       },
     ],
@@ -129,5 +129,63 @@ export const achievements = [
     number: "100%",
     label: "SCW Registration",
     subtitle: "Ensuring Compliance",
+  },
+];
+
+export const majorAwards = [
+  // Keep or extend as you confirm specifics.
+  // Example highlight entries (can be removed if not needed):
+  {
+    id: 1,
+    year: "2024",
+    title: "Care Employer of the Year",
+    organization: "British Care Awards",
+    description:
+      "Outstanding commitment to staff development, wellbeing, and a culture where care professionals thrive.",
+    achievement: "Winner",
+    color: "secondary-coral",
+    impact:
+      "High staff satisfaction and retention, with strong career pathways.",
+    image: "/images/awards/awards-2.jpeg",
+  },
+  {
+    id: 2,
+    year: "2022",
+    title: "British Care Awards - Best Care Home Team",
+    organization: "British Care Awards",
+    description:
+      "Recognised nationally for excellence in social care and leadership across multiple categories.",
+    achievement: "Winner",
+    color: "primary-gold",
+    impact: "National acknowledgement of quality and impact across services.",
+    image: "/images/awards/bestcareteam.jpg",
+  },
+];
+
+export const awardGallery = [
+  "/images/awards/awards-1.jpg",
+  "/images/awards/awards-2.jpeg",
+  "/images/awards/awards-3.jpeg",
+  "/images/awards/awards-4.png",
+  "/images/awards/awards-5.jpg",
+  "/images/awards/awards-6.jpeg",
+];
+
+export const awardPartners = [
+  {
+    name: "British Care Awards",
+    logo: "/images/awards/british-care.jpg",
+  },
+  {
+    name: "West Wales Business Awards",
+    logo: "/images/awards/WWBA.png",
+  },
+  {
+    name: "Welsh Veterans Awards",
+    logo: "/images/awards/Welsh-Veterans-Awards-Logo.png",
+  },
+  {
+    name: "The Learning Disabilities & Autism Awards",
+    logo: "/images/awards/AutismAwards.png",
   },
 ];

@@ -6,7 +6,11 @@ import Icon from "../common/Icon";
 function TestimonialCard({ testimonial, isActive }) {
   return (
     <div
-      className={`transition-all duration-500 ${isActive ? "opacity-100 scale-100" : "opacity-0 scale-95 absolute inset-0"}`}
+      className={`transition-all duration-500 ${
+        isActive
+          ? "opacity-100 scale-100 relative"
+          : "opacity-0 scale-95 absolute inset-0 pointer-events-none"
+      }`}
     >
       <div className="bg-white rounded-xl shadow-lg p-8 relative">
         {/* Quote icon */}
@@ -134,21 +138,21 @@ export default function TestimonialsSection() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-16">
           <div className="text-center">
             <div className="text-3xl sm:text-4xl font-bold text-primary-gold mb-2">
-              95%
+              98%
             </div>
-            <div className="text-white/80">Employee Satisfaction</div>
+            <div className="text-white/80">Training Satisfaction</div>
           </div>
           <div className="text-center">
             <div className="text-3xl sm:text-4xl font-bold text-primary-gold mb-2">
-              4.8/5
+              5
             </div>
-            <div className="text-white/80">Benefits Rating</div>
+            <div className="text-white/80">QCF Qualifications</div>
           </div>
           <div className="text-center">
             <div className="text-3xl sm:text-4xl font-bold text-primary-gold mb-2">
-              89%
+              2x
             </div>
-            <div className="text-white/80">Would Recommend</div>
+            <div className="text-white/80">Employer of the year</div>
           </div>
         </div>
       </div>

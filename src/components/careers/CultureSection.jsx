@@ -32,7 +32,7 @@ export default function CultureSection() {
             </h2>
             <p className="text-lg sm:text-xl text-gray-600 leading-relaxed mb-6 sm:mb-8">
               At M&amp;D Care, our values aren&apos;t just words on a
-              wall—they&apos;re lived every day by every team member. Join a
+              wall-they&apos;re lived every day by every team member. Join a
               workplace where you can truly be yourself while making a
               meaningful difference.
             </p>
@@ -74,9 +74,14 @@ export default function CultureSection() {
                 "
               </div>
               <blockquote className="text-lg sm:text-xl text-gray-700 leading-relaxed mb-4 sm:mb-6 font-medium">
-                Working at M&amp;D Care has completely changed my perspective on
-                what a job can be. It&apos;s not just work—it&apos;s a calling.
-                Every day I come home knowing I&apos;ve made a real difference.
+                I absolutely love being a Support Worker, I really do enjoy my
+                job. It is such a privilege to be able to make a difference to
+                someone’s life; watching them grow in confidence and
+                independence. The variety of the role is fantastic and every day
+                is different; from providing individuals to be able to cook and
+                clean for themselves, to taking them to different activities
+                within the community such as kickboxing and choir, to assisting
+                them on holiday.
               </blockquote>
 
               <div className="flex items-center">
@@ -88,13 +93,10 @@ export default function CultureSection() {
                 </div>
                 <div>
                   <div className="font-bold text-primary-navy text-base sm:text-lg">
-                    Rachel Thomas
+                    Rosalind Williams
                   </div>
                   <div className="text-secondary-coral text-sm sm:text-base">
-                    Senior Support Worker
-                  </div>
-                  <div className="text-gray-500 text-xs sm:text-sm">
-                    3 years at M&amp;D Care
+                    Support Worker
                   </div>
                 </div>
               </div>

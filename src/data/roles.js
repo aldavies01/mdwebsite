@@ -9,9 +9,9 @@ export const rolesData = {
       "From your first day in care to senior leadership positions, we offer meaningful career paths that grow with your passion and ambition.",
     stats: [
       { number: "650+", label: "Team Members" },
-      { number: "7", label: "Different Roles" },
-      { number: "92%", label: "Staff Satisfaction" },
-      { number: "15+", label: "Years Growing" },
+      { number: "Multiple", label: "Career Pathways" },
+      { number: "2x", label: "Employer of the year" },
+      { number: "16+", label: "Years Growing" },
     ],
   },
 
@@ -379,11 +379,11 @@ export const rolesData = {
       link: "https://jobs.dayforcehcm.com/en-GB/manddcare/CANDIDATEPORTAL",
     },
     secondaryButton: {
-      text: "Submit Your CV",
-      link: "/careers/apply",
+      text: "Our Benefits",
+      link: "/careers/benefits",
     },
     contact: {
-      email: "recruitment@mandddcare.co.uk",
+      email: "recruitment@manddcare.co.uk",
       phone: "01792 885126",
     },
   },

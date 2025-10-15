@@ -4,69 +4,51 @@ export const supportedLivingDetails = {
   "crown-street": {
     name: "Crown Street",
     type: "Supported Living Service",
-    address: "",
-    phone: "",
-    email: "",
     regulatorRatingLabel: "CIW",
     rating: "Awaiting Inspection",
 
-    capacity: "",
-    established: "",
-
     description:
-      "Independence-focused supported living within the community, with flexible staff support as needed.",
+      "Community-based supported living designed to help individuals live independently with flexible staff support as needed.",
     longDescription:
-      "Crown Street provides person-centred supported living that balances autonomy with safety. Our team supports daily living skills, health appointments, and meaningful community activity while promoting confidence and independence.",
+      "Crown Street offers person-centred supported living that balances independence and reassurance. Individuals are supported with daily living skills, health appointments, and meaningful community activities, promoting choice, confidence, and wellbeing.",
 
     specialties: ["Learning Disabilities", "Autism Support", "Mental Health"],
     features: [
       "24/7 on-call support",
       "Self-contained accommodation",
-      "Community access & activities",
-      "Health & appointments support",
-      "Skills development & routines",
+      "Community access and engagement",
+      "Health and appointments support",
+      "Skills development and daily routines",
     ],
 
     images: ["/images/supported-living/crown-street.jpg"],
-
-    staff: [
-      // { name: "", role: "", qualifications: "", experience: "" },
-    ],
 
     activities: [
       {
         name: "Community engagement",
         description:
-          "Regular access to local amenities, shops, and social opportunities.",
+          "Regular access to local shops, leisure facilities, and social opportunities within the community.",
       },
       {
         name: "Daily living skills",
         description:
-          "Structured support for budgeting, cooking, cleaning, and travel training.",
+          "Support with cooking, budgeting, cleaning, and maintaining personal routines to promote independence.",
       },
     ],
 
-    testimonials: [
-      // { text: "", author: "", relationship: "" },
-    ],
+    testimonials: [],
   },
 
   "glannant-road": {
     name: "Glannant Road",
     type: "Supported Living Service",
-    address: "",
-    phone: "",
-    email: "",
     regulatorRatingLabel: "CIW",
     rating: "Awaiting Inspection",
 
-    capacity: "",
-    established: "",
-
     description:
-      "Self-contained living with nearby team support, tailored to personal goals and routines.",
+      "Self-contained supported living accommodation with flexible, goal-focused staff support.",
     longDescription:
-      "Glannant Road offers a step-down environment from residential care. Support plans focus on building confidence, maintaining wellbeing, and progressing toward greater independence at the person’s own pace.",
+      "Glannant Road provides a calm and structured environment where individuals can build confidence and maintain wellbeing. Support focuses on life skills, community access, and personal goals, enabling each person to progress at their own pace.",
 
     specialties: ["Learning Disabilities", "Autism Support", "Mental Health"],
     features: [
@@ -77,176 +59,172 @@ export const supportedLivingDetails = {
     ],
 
     images: ["/images/supported-living/glannant.jpg"],
-    staff: [],
+
     activities: [
       {
         name: "Skills building",
-        description: "Budgeting and meal preparation.",
+        description:
+          "Practical support with budgeting, meal preparation, and household management.",
       },
       {
         name: "Health support",
-        description: "Medication and appointment support.",
+        description:
+          "Assistance with medication routines and access to healthcare appointments.",
       },
     ],
+
     testimonials: [],
   },
 
   "ebenezer-chapel": {
     name: "Ebenezer Chapel",
     type: "Supported Living Service",
-    address: "",
-    phone: "",
-    email: "",
     regulatorRatingLabel: "CIW",
     rating: "Awaiting Inspection",
-
-    capacity: "",
-    established: "",
 
     description:
       "Community-based supported living with consistent staff on hand when needed.",
     longDescription:
-      "At Ebenezer Chapel, individuals live in their own accommodation with support wrapped around their needs. Our approach emphasises community participation, personal choice, and safety.",
+      "Ebenezer Chapel offers person-centred supported living in a welcoming and community-focused setting. Individuals live in their own accommodation and receive flexible support designed to encourage independence, choice, and safety while maintaining strong community links.",
 
     specialties: ["Learning Disabilities", "Autism Support", "Mental Health"],
     features: [
       "Own tenancy feel",
       "On-call and scheduled support",
-      "Structured routines & goals",
+      "Structured routines and goals",
       "Transport and travel training",
     ],
 
     images: ["/images/supported-living/ebenezer.jpg"],
-    staff: [],
+
     activities: [
       {
         name: "Community outings",
-        description: "Social events and local activities.",
+        description:
+          "Support to access local shops, events, and leisure activities.",
       },
       {
         name: "Healthy living",
-        description: "Support with cooking and nutrition.",
+        description:
+          "Encouraging cooking, nutrition, and lifestyle choices that support wellbeing.",
       },
     ],
+
     testimonials: [],
   },
 
   "wern-road": {
     name: "Wern Road",
     type: "Supported Living Service",
-    address: "",
-    phone: "",
-    email: "",
     regulatorRatingLabel: "CIW",
     rating: "Awaiting Inspection",
-
-    capacity: "",
-    established: "",
 
     description:
       "Safe, supportive accommodation designed to foster life skills and independence.",
     longDescription:
-      "Wern Road focuses on practical skills, wellbeing, and access to the community. Staff provide the right level of support at the right time, encouraging self-reliance.",
+      "Wern Road provides a structured and supportive environment where individuals can develop confidence and practical skills for everyday life. The focus is on wellbeing, social inclusion, and achieving personal goals with the right level of support when needed.",
 
     specialties: ["Learning Disabilities", "Autism Support", "Mental Health"],
     features: [
       "Personalised support plans",
-      "Proactive health monitoring",
+      "Proactive health and wellbeing monitoring",
       "Meaningful daytime activity",
       "Family and professional liaison",
     ],
 
     images: ["/images/supported-living/wern.png"],
-    staff: [],
+
     activities: [
       {
         name: "Routine building",
-        description: "Daily structure and planning.",
+        description:
+          "Encouraging structure, planning, and consistency in daily life.",
       },
       {
         name: "Social connection",
-        description: "Encouraging friendships and inclusion.",
+        description:
+          "Supporting residents to form friendships and participate in local community life.",
       },
     ],
+
     testimonials: [],
   },
 
   "thomas-street": {
     name: "Thomas Street",
     type: "Supported Living Service",
-    address: "",
-    phone: "",
-    email: "",
     regulatorRatingLabel: "CIW",
     rating: "Awaiting Inspection",
 
-    capacity: "",
-    established: "",
-
     description:
-      "Supported living that blends privacy with responsive, peripatetic staff support.",
+      "Supported living that blends privacy with responsive, flexible staff support.",
     longDescription:
-      "At Thomas Street, people live in self-contained homes with flexible staff input. We promote choice, independence, and participation in local life.",
+      "Thomas Street offers self-contained accommodation with flexible peripatetic staff input. Individuals are supported to maintain independence, build life skills, and participate in community life while having access to staff whenever needed.",
 
     specialties: ["Learning Disabilities", "Autism Support", "Mental Health"],
     features: [
       "24/7 on-call availability",
-      "Goal-oriented outcomes",
-      "Medication & appointments support",
-      "Travel training and access",
+      "Goal-oriented support plans",
+      "Medication and appointments assistance",
+      "Travel training and community access",
     ],
 
     images: ["/images/supported-living/thomas-street.jpeg"],
-    staff: [],
+
     activities: [
       {
         name: "Life admin support",
-        description: "Budgeting and tenancy skills.",
+        description:
+          "Encouragement with budgeting, organisation, and tenancy-related tasks.",
       },
       {
         name: "Recreation",
-        description: "Hobbies, sports, and group activities.",
+        description:
+          "Enjoyable hobbies, social events, and leisure opportunities that promote wellbeing.",
       },
     ],
+
     testimonials: [],
   },
 
   "primrose-lane": {
     name: "Primrose Lane",
     type: "Supported Living Service",
-    address: "",
-    phone: "",
-    email: "",
     regulatorRatingLabel: "CIW",
     rating: "Awaiting Inspection",
-
-    capacity: "",
-    established: "",
 
     description:
       "A calm, structured supported living environment with skilled staff available when needed.",
     longDescription:
-      "Primrose Lane supports people to live well at home and in the community. We focus on building independence, maintaining wellbeing, and achieving personal goals.",
+      "Primrose Lane supports individuals to live independently while maintaining a sense of security and belonging. The service promotes independence, personal growth, and participation in community life, with tailored support available when required.",
 
     specialties: ["Learning Disabilities", "Autism Support", "Mental Health"],
     features: [
       "Self-contained living",
       "Consistent core team support",
-      "Community access & transport",
+      "Community access and transport",
       "Skills and routines coaching",
     ],
 
     images: ["/images/supported-living/primrose.jpeg"],
-    staff: [],
+
     activities: [
-      { name: "Meal planning", description: "Healthy choices and food prep." },
-      { name: "Out-and-about", description: "Shops, parks, and local groups." },
+      {
+        name: "Meal planning",
+        description:
+          "Encouraging healthy food choices and participation in meal preparation.",
+      },
+      {
+        name: "Out-and-about",
+        description:
+          "Visiting local shops, parks, and community groups to build confidence and connection.",
+      },
     ],
+
     testimonials: [],
   },
 };
 
-// Display order for listings/grids
 export const supportedLivingOrder = [
   "crown-street",
   "glannant-road",

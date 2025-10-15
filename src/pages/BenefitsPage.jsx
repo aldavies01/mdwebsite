@@ -14,7 +14,7 @@ function BenefitsPage() {
       <BenefitsOverview />
       <BenefitsCategories />
       <TestimonialsSection />
-      <ComparisonTable />
+      {/* <ComparisonTable /> */}
       <FAQSection />
       <BenefitsCTA />
     </div>

@@ -5,25 +5,26 @@ const OVERVIEW_HIGHLIGHTS = [
   {
     icon: "shield-check",
     title: "Comprehensive Coverage",
-    description: "From healthcare to pension, we've got your future covered",
+    description:
+      "After 6 months of service, you will be eligible for our Simply Health benefit",
     color: "secondary-coral",
   },
   {
     icon: "trending-up",
     title: "Career Investment",
-    description: "£500 annual training budget plus clear progression paths",
+    description: "All QCF qualifications are fully funded",
     color: "primary-gold",
   },
   {
     icon: "heart",
     title: "Work-Life Balance",
-    description: "Flexible scheduling and genuine respect for your time",
+    description: "Flexible scheduling and respect for your time",
     color: "secondary-teal",
   },
   {
     icon: "users",
-    title: "Family Focused",
-    description: "Benefits that extend to your loved ones, not just you",
+    title: "Rewards",
+    description: "Bonus reaward scheme for referring your friends",
     color: "secondary-purple",
   },
 ];
@@ -87,20 +88,20 @@ export default function BenefitsOverview() {
           <div>
             <h3 className="text-2xl sm:text-3xl font-bold text-primary-navy mb-6">
               More Than Just Benefits - It's About{" "}
-              <span className="text-secondary-coral">Belonging</span>
+              <span className="text-secondary-coral">Growth and Support</span>
             </h3>
             <div className="space-y-4 text-gray-600 leading-relaxed">
               <p>
-                At M&D Care, we understand that great care starts with great
-                care for our team. That's why our benefits package goes beyond
-                the basics to create a comprehensive support system for every
-                aspect of your life.
+                At M&D Care, we believe that supporting our team is just as
+                important as supporting the people we care for. That’s why we
+                focus on offering meaningful opportunities to learn, grow, and
+                feel valued in your role.
               </p>
               <p>
-                Whether you're starting your career in care or you're an
-                experienced professional looking for your next challenge, our
-                benefits are designed to grow with you and support your personal
-                and professional journey.
+                From fully funded QCF qualifications and professional
+                development pathways to access to early pay and wellbeing
+                support, we’re here to help you build a rewarding career in care
+                — one step at a time.
               </p>
             </div>
 
@@ -110,15 +111,16 @@ export default function BenefitsOverview() {
                   From Day One
                 </div>
                 <div className="text-sm text-gray-600">
-                  Full benefits package starts immediately
+                  Access to early pay and support resources from your first
+                  shift
                 </div>
               </div>
               <div className="bg-secondary-teal/10 border border-secondary-teal/20 rounded-lg p-4 flex-1">
                 <div className="text-2xl font-bold text-secondary-teal mb-1">
-                  Always Growing
+                  Always Learning
                 </div>
                 <div className="text-sm text-gray-600">
-                  Benefits improve with length of service
+                  Fully funded QCF courses and career development opportunities
                 </div>
               </div>
             </div>

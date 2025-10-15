@@ -8,7 +8,7 @@ export const benefitsData = {
     description:
       "We believe that great care starts with great care for our team members. Discover the comprehensive benefits package that makes M&D Care a place where you can truly thrive.",
     stats: [
-      { number: "20+", label: "Days Holiday" },
+      { number: "Fully Funded", label: "QCF Qualifications" },
       { number: "£500", label: "Refer a Friend" },
       { number: "24/7", label: "Support Line" },
       { number: "£1000+", label: "Simply Health Contribution" },
@@ -30,11 +30,11 @@ export const benefitsData = {
           description: "Above industry standard rates with regular reviews",
           icon: "trending-up",
         },
-        // {
-        //   title: "Pension Scheme",
-        //   description: "We match up to 8% of your contributions",
-        //   icon: "shield",
-        // },
+        {
+          title: "Early Pay",
+          description: "Access your earnings before payday when you need them.",
+          icon: "shield",
+        },
         {
           title: "Performance Bonuses",
           description:
@@ -73,70 +73,81 @@ export const benefitsData = {
           icon: "activity",
         },
         {
-          title: "Need a 4th",
-          description: "***** add benefit *****",
-          icon: "check-circle",
+          title: "Wellbeing Activities",
+          description:
+            "Access to staff wellbeing events and initiatives throughout the year.",
+          icon: "smile",
         },
       ],
     },
     {
       id: "time-off",
-      name: "Time Off & Flexibility",
-      description: "Work-life balance that actually works",
+      name: "Work-Life Balance",
+      description: "Flexibility that fits real life",
       icon: "clock",
       color: "secondary-teal",
       benefits: [
         {
-          title: "20+ Days Holiday",
-          description: "Starting at 20 days, increasing with service",
+          title: "Shift Preferences",
+          description:
+            "We aim to match your preferred shift pattern — days, nights, or a mix that suits you.",
+          icon: "clock",
+        },
+        {
+          title: "Fair Weekends",
+          description:
+            "We do our best to ensure weekends are shared fairly across the team.",
           icon: "calendar",
         },
         {
-          title: "Flexible Working",
-          description: "Choose shifts that fit your lifestyle",
-          icon: "refresh-cw",
+          title: "Family-Friendly Approach",
+          description:
+            "We understand childcare and personal commitments and try to plan rotas accordingly.",
+          icon: "users",
         },
         {
-          title: "Long Service Leave",
-          description: "Additional days off for loyal team members",
-          icon: "award",
-        },
-        {
-          title: "Birthday Leave",
-          description: "Take your birthday off - on us!",
-          icon: "gift",
+          title: "Flexible Support",
+          description:
+            "We listen and adapt where we can to make work fit around your life.",
+          icon: "heart",
         },
       ],
     },
+
     {
       id: "development",
       name: "Learning & Development",
-      description: "Invest in your future with continuous learning",
+      description: "Grow your skills with real support and opportunity",
       icon: "book",
       color: "secondary-purple",
       benefits: [
         {
-          title: "£500 Training Budget",
-          description: "Annual budget for courses and qualifications",
+          title: "Fully Funded QCF Qualifications",
+          description:
+            "Gain recognised care qualifications – fully funded by us.",
           icon: "graduation-cap",
         },
         {
-          title: "Career Progression",
-          description: "Clear pathways and mentorship programs",
+          title: "Paid Learning Time",
+          description:
+            "Dedicated paid time to complete your online training modules.",
+          icon: "clock",
+        },
+        {
+          title: "Internal Progression",
+          description:
+            "We regularly promote from within and help you take the next step in your career.",
           icon: "arrow-up",
         },
         {
-          title: "Conference Attendance",
-          description: "Industry events and networking opportunities",
-          icon: "users",
-        },
-        {
-          title: "Skills Development",
-          description: "Regular training sessions and workshops",
+          title: "Interactive Training Sessions",
+          description:
+            "Led by expert trainers who make learning engaging – not just slides and PowerPoints.",
           icon: "lightbulb",
         },
       ],
     },
+
     {
       id: "lifestyle",
       name: "Lifestyle Benefits",
@@ -172,26 +183,26 @@ export const benefitsData = {
   testimonials: [
     {
       quote:
-        "The benefits here are incredible. The private healthcare gave me peace of mind when my daughter needed surgery, and the flexible working means I can be there for school events.",
-      name: "Sarah Mitchell",
-      role: "Senior Care Assistant",
+        "TThe care sector is and has always been a difficult one to staff especially domiciliary care, and In  my experience over the years I have always found that on my days off you are constantly asked to work extra to cover sickness, however under M&D this request has been almost non-existent, this I believe to be because M&D domiciliary care has the backing of their staff in the many supported living houses, but also due to relaxed nature of the working day there are far less people calling in sick and the staff are generally more willing to pick up extra shifts.",
+      name: "Matthias Mitchell",
+      role: "Senior Support Worker",
       tenure: "4 years at M&D Care",
       avatar: "/images/testimonials/sarah.jpg",
     },
     {
       quote:
-        "I've used my £500 training budget to get my NVQ Level 3. The company really invests in your development - it's not just talk, they put their money where their mouth is.",
-      name: "James Roberts",
-      role: "Team Leader",
-      tenure: "2 years at M&D Care",
+        "Coming into M&D Care through the Kickstart scheme has given me a chance to experience the care sector – and I’m really enjoying it so far! The experience has enabled me to be part of a good team, and now I have the chance of a full time job with the hopes of becoming a Senior Support Worker",
+      name: "Latoya Jones",
+      role: "Support Worker",
+      tenure: "5 years at M&D Care",
       avatar: "/images/testimonials/james.jpg",
     },
     {
       quote:
-        "The work-life balance here is amazing. I can choose shifts that work around my family life, and the 25 days holiday plus my birthday off means I never feel burnt out.",
-      name: "Emma Thompson",
-      role: "Support Worker",
-      tenure: "3 years at M&D Care",
+        "What has always stood out to me is that M&D Care, really do care. It is such a supportive environment to work in. The Directors care about their staff and they develop their strengths, I have been given many opportunities to evolve and develop a career in a new area. I have always felt fully supported in every role I have undertaken. There is a culture of openness and transparency where talents are recognised and developed. ",
+      name: "Suzie Rogers",
+      role: "Commercial Manager",
+      tenure: "10 years at M&D Care",
       avatar: "/images/testimonials/emma.jpg",
     },
   ],
@@ -236,9 +247,9 @@ export const benefitsData = {
         "Most benefits begin from your first day, including blue lught discount and holiday accrual. Simply health contributions will start after 6 months of employment.",
     },
     {
-      question: "Can I use my training budget for any course?",
+      question: "How do I start QCF training?",
       answer:
-        "Your £500 training budget can be used for any course that enhances your role or career development. We pre-approve most industry-relevant training and qualifications.",
+        "We aim to get all of our Support Workers to a minimum of QCF level 2 as soon as possible. Once this is completed, you will have the opportunity to pursue the higher levels.",
     },
     {
       question: "Can I refer more than one friend?",

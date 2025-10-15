@@ -55,10 +55,10 @@ export default function BenefitsHero() {
               </a>
 
               <a
-                href="/culture"
+                href="/about/values"
                 className="bg-white/10 text-white border-2 border-white/30 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold hover:bg-white hover:text-primary-navy transition-all duration-300 text-center text-sm sm:text-base"
               >
-                Learn About Our Culture
+                Learn About Our Values
               </a>
             </div>
           </div>

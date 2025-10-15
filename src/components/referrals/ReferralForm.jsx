@@ -27,15 +27,21 @@ function ReferralForm() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null);
+  const [submitStatus, setSubmitStatus] = useState(null); // "success" | error string | null
   const [errors, setErrors] = useState({});
 
-  // Basic validation
+  const validateEmail = (email) =>
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email || ""));
+
+  // Basic validation aligned with API
   const validateForm = () => {
     const newErrors = {};
-
     if (!formData.referrer_name.trim()) newErrors.referrer_name = "Required";
     if (!formData.referrer_email.trim()) newErrors.referrer_email = "Required";
+    else if (!validateEmail(formData.referrer_email))
+      newErrors.referrer_email = "Invalid email";
+    if (!formData.first_name.trim()) newErrors.first_name = "Required";
+    if (!formData.last_name.trim()) newErrors.last_name = "Required";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -47,18 +53,16 @@ function ReferralForm() {
       ...prev,
       [name]: type === "checkbox" ? checked : value,
     }));
-
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: "" }));
+    }
+    if (submitStatus && submitStatus !== "success") {
+      setSubmitStatus(null);
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    console.log("submitted");
-
     if (!validateForm()) return;
 
     setIsSubmitting(true);
@@ -73,7 +77,6 @@ function ReferralForm() {
 
       if (response.ok) {
         setSubmitStatus("success");
-        // Clear form
         setFormData({
           referrer_name: "",
           referrer_role: "",
@@ -92,10 +95,13 @@ function ReferralForm() {
           data_consent: false,
         });
       } else {
-        setSubmitStatus("error");
+        const err = await response.json().catch(() => ({}));
+        setSubmitStatus(
+          err?.error || "Something went wrong. Please try again."
+        );
       }
     } catch (error) {
-      setSubmitStatus("error");
+      setSubmitStatus("Network error. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -146,7 +152,14 @@ function ReferralForm() {
         </div>
       ) : (
         <div className="bg-white rounded-2xl shadow-lg p-8">
-          <div onSubmit={handleSubmit}>
+          {/* Optional top-level error */}
+          {submitStatus && (
+            <div className="mb-6 rounded-lg border border-red-200 bg-red-50 p-4 text-red-700">
+              {submitStatus}
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} noValidate>
             {/* Referrer Information Section */}
             <div className="mb-8">
               <h2 className="text-xl font-bold text-primary-navy mb-4 border-b border-gray-200 pb-2">
@@ -227,6 +240,7 @@ function ReferralForm() {
                 </div>
               </div>
             </div>
+
             {/* Individual Being Referred Section */}
             <div className="mb-8">
               <h2 className="text-xl font-bold text-primary-navy mb-4 border-b border-gray-200 pb-2">
@@ -308,13 +322,12 @@ function ReferralForm() {
               </div>
             </div>
 
-            {/* Submit Button */}
+            {/* Submit */}
             <div className="border-t border-gray-200 pt-6">
               <div className="flex justify-between items-center">
                 <p className="text-sm text-gray-600">* Required fields</p>
                 <button
-                  type="button"
-                  onClick={handleSubmit}
+                  type="submit"
                   disabled={isSubmitting}
                   className="bg-primary-navy text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary-navy/90 focus:outline-none focus:ring-2 focus:ring-primary-navy focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
@@ -322,7 +335,7 @@ function ReferralForm() {
                 </button>
               </div>
             </div>
-          </div>
+          </form>
         </div>
       )}
     </div>

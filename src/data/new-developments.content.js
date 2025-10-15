@@ -10,103 +10,102 @@ export const hero = {
   ],
   stats: [
     { value: "4", label: "Major Projects" },
-    { value: "50+", label: "New Capacity" },
-    { value: "25-26", label: "Launch Year" },
+    { value: "51+", label: "New Capacity" }, // 16 + 12 + 8 + 15
+    { value: "25–26", label: "Launch Year" },
   ],
-  heroImage: "/images/developments/hero-placeholder.jpg",
+  heroImage: "/images/residential/Ty Gwerthfawr.jpeg",
 };
 
 export const upcomingDevelopments = [
   {
-    id: 1,
-    title: "Ty Ddraig",
-    location: "Rhigos, Rhondda",
-    status: "Building Phase",
-    openingDate: "Q4 2025",
+    id: 2,
+    title: "Ty Gwerthfawr (Precious House)",
+    location: "Pontardawe",
+    status: "Final Preparation",
+    openingDate: "Early 2025",
     description:
-      "A purpose-built facility designed specifically for adults with autism and complex needs, featuring sensory rooms, therapeutic gardens, and innovative technology.",
+      "A 12-flat residential service with all ground-floor flats (10 wheelchair accessible). Flat-based model of care with a large communal space and large private garden. Supporting adults with mental health, learning disability and physical disability.",
     features: [
-      "12-bed specialist residential facility",
-      "Sensory integration therapy rooms",
-      "Therapeutic gardens and outdoor spaces",
-      "Advanced assistive technology",
-      "24/7 specialist autism support",
-      "PBS practitioner on-site",
+      "12 flat residential service",
+      "All ground floor flats",
+      "10 wheelchair accessible flats",
+      "Flat-based model of care",
+      "Large communal space",
+      "Large private garden space",
+      "Mental health, learning disability and physical disability",
     ],
-    capacity: "8 residents",
+    capacity: "12 residents",
     usp: "New jobs created",
     uspValue: "50",
-    image: "/images/developments/llanelli-centre.jpg",
+    image: "/images/residential/Ty Gwerthfawr.jpeg",
+    category: "Residential",
+    priority: "High",
+  },
+  {
+    id: 1,
+    title: "Ty Ddraig",
+    location: "Rhigos",
+    status: "In Development",
+    openingDate: "2026",
+    description:
+      "A specialist residential service set on a large area of land in Rhigos. Designed to house up to 16 people in bespoke individual accommodation, based on a tried and tested flat-led model of support. The service will support adults with complex learning disabilities, autism spectrum conditions and associated diagnoses, in homely accommodation that can be personalised and provides a robust and safe environment.",
+    features: [
+      "16 self contained flats across two floors",
+      "PBS Practitioners based within the service",
+      "Active support led",
+      "Extensive garden space",
+      "Autism and learning disability",
+    ],
+    capacity: "16 residents",
+    usp: "New jobs created",
+    uspValue: "100",
+    image: "/images/developments/ty-ddraig.jpg",
     category: "Specialist Care",
     priority: "High",
   },
   {
-    id: 2,
-    title: "Tonypandy",
-    location: "Tonypandy",
-    status: "Planning Phase",
-    openingDate: "Q2 2025",
-    description:
-      "A purpose-built facility designed specifically for adults with autism and complex needs, featuring sensory rooms, therapeutic gardens, and innovative technology.",
-    features: [
-      "Digital skills workshops",
-      "Assistive technology showcase",
-      "Remote learning capabilities",
-      "Social interaction spaces",
-      "Tech support and training",
-    ],
-    capacity: "15 supported",
-    usp: "New jobs created",
-    uspValue: "50",
-    image: "/images/developments/digital-hub.jpg",
-    category: "Innovation",
-    priority: "Medium",
-  },
-  {
     id: 3,
-    title: "Head Office Renovation",
-    location: "Carmarthen",
-    status: "Completed",
-    openingDate: "Q2 2025",
+    title: "Tonypandy Apartments",
+    location: "Tonypandy",
+    status: "In Development",
+    openingDate: "2025",
     description:
-      "A state of the art facility, acting as our central hub. We run daily training courses for our highly qualified staff members",
+      "Vision is a residential service across three floors, delivered as a flat-based model of care. Will support individuals with learning disabilities, ASC and associated health conditions, with a focus on enabling independence through targeted, person-centred support.",
     features: [
-      "Multi-purpose activity halls",
-      "Respite care facilities",
-      "Family support rooms",
-      "Café and social spaces",
-      "Accessible fitness suite",
-      "Arts and crafts studios",
+      "8 flat residential service across 3 floors",
+      "2 ground floor flats",
+      "3 first floor flats",
+      "3 top floor flats",
+      "Flat-based model of care",
+      "Mental health, learning disability and physical disability",
     ],
-    capacity: "75 daily attendees",
+    capacity: "8 residents",
     usp: "New jobs created",
-    uspValue: "50",
-    image: "/images/developments/wellbeing-centre.jpg",
-    category: "Community",
+    uspValue: "40",
+    image: "/images/residential/tonypandy.png",
+    category: "Residential",
     priority: "High",
   },
   {
     id: 4,
-    title: "Project 4",
-    location: "Pembrokeshire",
-    status: "Property Search",
-    openingDate: "Q1 2026",
+    title: "Gowerton",
+    location: "Gowerton",
+    status: "In Development",
+    openingDate: "2026",
     description:
-      "New residential living accommodations expanding our services into Pembrokeshire, providing modern, accessible homes with flexible support packages.",
+      "A 15-flat residential service transforming a former primary school into a modern, flat-based residential service. Will support individuals with mental health, learning disability and physical health needs, with scope for future expansion and development.",
     features: [
-      "12 new supported living flats",
-      "Flexible support packages",
-      "Community integration focus",
-      "Employment support hub",
-      "Transport links optimization",
-      "Local partnership development",
+      "15 flat residential service",
+      "Downstairs accessible flats alongside first floor flats",
+      "Flat-based model of care",
+      "Mental health, learning disability and physical health",
     ],
-    capacity: "12 individuals",
+    capacity: "15 residents",
     usp: "New jobs created",
-    uspValue: "50",
-    image: "/images/developments/pembrokeshire-homes.jpg",
-    category: "Expansion",
-    priority: "Medium",
+    uspValue: "60",
+    image: "/images/developments/gowerton.jpg",
+    category: "Residential",
+    priority: "High",
   },
 ];
 
@@ -115,7 +114,7 @@ export const innovations = [
     title: "Innovative Care Planning Technology",
     description:
       "Implementing artificial intelligence to enhance person-centered care planning and predict support needs.",
-    status: "Pilot Phase",
+    status: "Planning Phase",
     icon: "lightbulb",
   },
   {
@@ -131,34 +130,34 @@ export const innovations = [
     status: "Implementation",
     icon: "home",
   },
-  {
-    title: "Mobile Support App",
-    description:
-      "Developing a comprehensive mobile application for service users, families, and staff communication.",
-    status: "Development",
-    icon: "smartphone",
-  },
+  // {
+  //   title: "Mobile Support App",
+  //   description:
+  //     "Developing a comprehensive mobile application for service users, families, and staff communication.",
+  //   status: "Development",
+  //   icon: "smartphone",
+  // },
 ];
 
 export const timeline = [
   {
-    devId: 3, // links to Head Office Renovation
+    devId: 2, // Ty Gwerthfawr
     period: "Q2 2025",
     color: "secondary-purple",
   },
   {
-    devId: 1, // links to Ty Ddraig
-    period: "Q3 2025",
+    devId: 3, // Tonypandy Apartments
+    period: "Q4 2025",
     color: "secondary-coral",
   },
   {
-    devId: 2, // links to Tonypandy
-    period: "Q4 2025",
+    devId: 4, // Gowerton
+    period: "Q3 2026",
     color: "secondary-teal",
   },
   {
-    devId: 4, // links to Project 4
-    period: "Q1 2026",
+    devId: 1, // Ty Ddraig
+    period: "Q4 2026",
     color: "primary-gold",
   },
 ];

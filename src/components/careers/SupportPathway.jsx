@@ -117,10 +117,14 @@ export default function SupportPathway() {
                   “
                 </div>
                 <blockquote className="text-gray-800 sm:text-lg leading-relaxed">
-                  I started as a Support Worker with no experience. With
-                  training, great mentors, and clear progression, I became a
-                  Registered Manager and stepped up to Area Manager. If you care
-                  about people, this is a place to grow.
+                  I’d always dreamed of having a career in care, being able to
+                  make a difference to someone’s life was something that really
+                  appealed to me. Working in a café, I always knew I was good
+                  with people and wasn’t shy of hard work. However, for a long
+                  time I didn’t have the confidence to think that I could work
+                  in care with young adults with mental health and learning
+                  disabilities. In 2014, I took a leap of faith and applied for
+                  a Support Worker role at M&D Care.
                 </blockquote>
                 <div className="mt-4 flex flex-wrap items-center gap-3 text-sm">
                   <span className="font-bold text-primary-navy">
@@ -128,7 +132,7 @@ export default function SupportPathway() {
                   </span>
                   <span className="text-gray-500">Area Manager</span>
                   <span className="text-gray-400">•</span>
-                  <span className={`${c.text}`}>10 years at M&amp;D Care</span>
+                  <span className={`${c.text}`}>10+ years at M&amp;D Care</span>
                 </div>
                 <div className="mt-4">
                   <span
