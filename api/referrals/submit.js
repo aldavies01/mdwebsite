@@ -1,345 +1,142 @@
-import { useState } from "react";
+import { createClient } from "@supabase/supabase-js";
+import { Resend } from "resend";
 
-function ReferralForm() {
-  const [formData, setFormData] = useState({
-    // Referrer Information
-    referrer_name: "",
-    referrer_role: "",
-    referrer_org: "",
-    referrer_email: "",
-    referrer_phone: "",
+const isEmail = (s) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(s || ""));
 
-    // Individual Being Referred
-    first_name: "",
-    last_name: "",
-    date_of_birth: "",
-    gender: "",
+export default async function handler(req, res) {
+  if (req.method !== "POST")
+    return res.status(405).json({ error: "Method not allowed" });
 
-    // Support Needs
-    primary_needs: "",
-    support_type: "",
-    urgency: "routine",
-    current_location: "",
-
-    // Consent
-    consent_given: false,
-    data_consent: false,
-  });
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null); // "success" | error string | null
-  const [errors, setErrors] = useState({});
-
-  const validateEmail = (email) =>
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email || ""));
-
-  // Basic validation aligned with API
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formData.referrer_name.trim()) newErrors.referrer_name = "Required";
-    if (!formData.referrer_email.trim()) newErrors.referrer_email = "Required";
-    else if (!validateEmail(formData.referrer_email))
-      newErrors.referrer_email = "Invalid email";
-    if (!formData.first_name.trim()) newErrors.first_name = "Required";
-    if (!formData.last_name.trim()) newErrors.last_name = "Required";
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-    if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: "" }));
-    }
-    if (submitStatus && submitStatus !== "success") {
-      setSubmitStatus(null);
-    }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!validateForm()) return;
-
-    setIsSubmitting(true);
-    setSubmitStatus(null);
-
-    try {
-      const response = await fetch("/api/referrals/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        setSubmitStatus("success");
-        setFormData({
-          referrer_name: "",
-          referrer_role: "",
-          referrer_org: "",
-          referrer_email: "",
-          referrer_phone: "",
-          first_name: "",
-          last_name: "",
-          date_of_birth: "",
-          gender: "",
-          primary_needs: "",
-          support_type: "",
-          urgency: "routine",
-          current_location: "",
-          consent_given: false,
-          data_consent: false,
-        });
-      } else {
-        const err = await response.json().catch(() => ({}));
-        setSubmitStatus(
-          err?.error || "Something went wrong. Please try again."
-        );
-      }
-    } catch (error) {
-      setSubmitStatus("Network error. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  return (
-    <div className="max-w-4xl mx-auto p-6">
-      <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold text-primary-navy mb-4">
-          Professional Referral Form
-        </h1>
-        <p className="text-gray-600">
-          All information is securely encrypted and transmitted to our Business
-          Development team
-        </p>
-      </div>
-
-      {submitStatus === "success" ? (
-        <div className="bg-green-50 border border-green-200 rounded-lg p-8 text-center">
-          <div className="text-green-600 mb-4">
-            <svg
-              className="w-16 h-16 mx-auto"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M5 13l4 4L19 7"
-              />
-            </svg>
-          </div>
-          <h2 className="text-2xl font-bold text-green-800 mb-2">
-            Referral Submitted Successfully
-          </h2>
-          <p className="text-green-700 mb-6">
-            Thank you for your referral. Our Business Development team will
-            review it and contact you within 24 hours.
-          </p>
-          <button
-            onClick={() => setSubmitStatus(null)}
-            className="bg-primary-navy text-white px-6 py-3 rounded-lg hover:bg-primary-navy/90 transition-colors"
-          >
-            Submit Another Referral
-          </button>
-        </div>
-      ) : (
-        <div className="bg-white rounded-2xl shadow-lg p-8">
-          {/* Optional top-level error */}
-          {submitStatus && (
-            <div className="mb-6 rounded-lg border border-red-200 bg-red-50 p-4 text-red-700">
-              {submitStatus}
-            </div>
-          )}
-
-          <form onSubmit={handleSubmit} noValidate>
-            {/* Referrer Information Section */}
-            <div className="mb-8">
-              <h2 className="text-xl font-bold text-primary-navy mb-4 border-b border-gray-200 pb-2">
-                Your Information
-              </h2>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Your Name *
-                  </label>
-                  <input
-                    type="text"
-                    name="referrer_name"
-                    value={formData.referrer_name}
-                    onChange={handleChange}
-                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-navy ${
-                      errors.referrer_name
-                        ? "border-red-500"
-                        : "border-gray-300"
-                    }`}
-                    required
-                  />
-                  {errors.referrer_name && (
-                    <p className="text-red-500 text-sm mt-1">
-                      {errors.referrer_name}
-                    </p>
-                  )}
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Your Role/Position
-                  </label>
-                  <input
-                    type="text"
-                    name="referrer_role"
-                    value={formData.referrer_role}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-navy"
-                    placeholder="e.g., Social Worker, Care Coordinator"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Organization
-                  </label>
-                  <input
-                    type="text"
-                    name="referrer_org"
-                    value={formData.referrer_org}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-navy"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    name="referrer_email"
-                    value={formData.referrer_email}
-                    onChange={handleChange}
-                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-navy ${
-                      errors.referrer_email
-                        ? "border-red-500"
-                        : "border-gray-300"
-                    }`}
-                    required
-                  />
-                  {errors.referrer_email && (
-                    <p className="text-red-500 text-sm mt-1">
-                      {errors.referrer_email}
-                    </p>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            {/* Individual Being Referred Section */}
-            <div className="mb-8">
-              <h2 className="text-xl font-bold text-primary-navy mb-4 border-b border-gray-200 pb-2">
-                Individual Being Referred
-              </h2>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    First Name *
-                  </label>
-                  <input
-                    type="text"
-                    name="first_name"
-                    value={formData.first_name}
-                    onChange={handleChange}
-                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-navy ${
-                      errors.first_name ? "border-red-500" : "border-gray-300"
-                    }`}
-                    required
-                  />
-                  {errors.first_name && (
-                    <p className="text-red-500 text-sm mt-1">
-                      {errors.first_name}
-                    </p>
-                  )}
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Last Name *
-                  </label>
-                  <input
-                    type="text"
-                    name="last_name"
-                    value={formData.last_name}
-                    onChange={handleChange}
-                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-navy ${
-                      errors.last_name ? "border-red-500" : "border-gray-300"
-                    }`}
-                    required
-                  />
-                  {errors.last_name && (
-                    <p className="text-red-500 text-sm mt-1">
-                      {errors.last_name}
-                    </p>
-                  )}
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Date of Birth
-                  </label>
-                  <input
-                    type="date"
-                    name="date_of_birth"
-                    value={formData.date_of_birth}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-navy"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Gender
-                  </label>
-                  <select
-                    name="gender"
-                    value={formData.gender}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-navy"
-                  >
-                    <option value="">Select...</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="non-binary">Non-binary</option>
-                    <option value="prefer-not-to-say">Prefer not to say</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            {/* Submit */}
-            <div className="border-t border-gray-200 pt-6">
-              <div className="flex justify-between items-center">
-                <p className="text-sm text-gray-600">* Required fields</p>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="bg-primary-navy text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary-navy/90 focus:outline-none focus:ring-2 focus:ring-primary-navy focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                >
-                  {isSubmitting ? "Submitting..." : "Submit Referral"}
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
-      )}
-    </div>
+  // Must-have envs for DB; email is optional (won't block insert)
+  const missing = ["SUPABASE_URL", "SUPABASE_SECRET_KEY"].filter(
+    (k) => !process.env[k]
   );
-}
+  if (missing.length) {
+    return res
+      .status(500)
+      .json({ error: "Missing environment variables", missing });
+  }
 
-export default ReferralForm;
+  // Parse & validate
+  let body = req.body;
+  if (typeof body === "string") {
+    try {
+      body = JSON.parse(body);
+    } catch {
+      return res.status(400).json({ error: "Invalid JSON payload" });
+    }
+  }
+  body = body || {};
+
+  if (!body.referrer_name?.trim() || !isEmail(body.referrer_email)) {
+    return res
+      .status(400)
+      .json({ error: "Missing/invalid referrer name or email" });
+  }
+  if (!body.first_name?.trim() || !body.last_name?.trim()) {
+    return res.status(400).json({ error: "First and last name are required" });
+  }
+
+  const dob = body.date_of_birth
+    ? String(body.date_of_birth).slice(0, 10)
+    : null;
+
+  const row = {
+    referrer_name: body.referrer_name,
+    referrer_email: body.referrer_email,
+    referrer_phone: body.referrer_phone || null,
+    referrer_role: body.referrer_role || null,
+    referrer_org: body.referrer_org || null,
+    first_name: body.first_name,
+    last_name: body.last_name,
+    date_of_birth: dob,
+    gender: body.gender || null,
+    primary_needs: body.primary_needs || null,
+    support_type: body.support_type || null,
+    urgency: body.urgency || "routine",
+    current_location: body.current_location || null,
+    consent_given: !!body.consent_given,
+    data_consent: !!body.data_consent,
+    source_page: body.source_page || null,
+    ip_address:
+      req.headers["x-forwarded-for"]?.split(",")[0]?.trim() ||
+      req.socket?.remoteAddress ||
+      null,
+    user_agent: req.headers["user-agent"] || null,
+  };
+
+  const supabase = createClient(
+    process.env.SUPABASE_URL,
+    process.env.SUPABASE_SECRET_KEY,
+    {
+      auth: { persistSession: false },
+    }
+  );
+
+  // Try insert and always return the supabase error details if it fails
+  const { data, error } = await supabase
+    .from("referrals")
+    .insert([row])
+    .select("id, created_at")
+    .single();
+
+  if (error) {
+    return res.status(500).json({
+      error: "Database insert failed",
+      code: error.code,
+      message: error.message,
+      details: error.details,
+      hint: error.hint,
+      // keep the row keys to spot a bad column name quickly
+      inserted_keys: Object.keys(row),
+    });
+  }
+
+  // Email is best-effort (skip if not fully configured)
+  try {
+    if (
+      process.env.RESEND_API_KEY &&
+      process.env.EMAIL_FROM &&
+      process.env.BDM_EMAIL_TO
+    ) {
+      const resend = new Resend(process.env.RESEND_API_KEY);
+      await resend.emails.send({
+        from: process.env.EMAIL_FROM, // verified sender in Resend
+        to: [process.env.BDM_EMAIL_TO],
+        subject: `New referral: ${row.first_name} ${row.last_name} (${row.urgency})`,
+        html: `
+          <h2>New Referral</h2>
+          <p><strong>Submitted:</strong> ${new Date().toISOString()}</p>
+          <h3>Referrer</h3>
+          <ul>
+            <li>${row.referrer_name} &lt;${row.referrer_email}&gt;</li>
+            ${row.referrer_phone ? `<li>Phone: ${row.referrer_phone}</li>` : ""}
+            ${row.referrer_role ? `<li>Role: ${row.referrer_role}</li>` : ""}
+            ${row.referrer_org ? `<li>Organisation: ${row.referrer_org}</li>` : ""}
+          </ul>
+          <h3>Person Referred</h3>
+          <ul>
+            <li>${row.first_name} ${row.last_name}</li>
+            <li>DOB: ${row.date_of_birth ?? "-"}</li>
+            <li>Gender: ${row.gender ?? "-"}</li>
+            <li>Urgency: ${row.urgency}</li>
+            <li>Current location: ${row.current_location ?? "-"}</li>
+            <li>Support type: ${row.support_type ?? "-"}</li>
+            <li>Primary needs: ${row.primary_needs ?? "-"}</li>
+          </ul>
+          <h3>Consent</h3>
+          <ul>
+            <li>Consent given: ${row.consent_given ? "Yes" : "No"}</li>
+            <li>Data consent: ${row.data_consent ? "Yes" : "No"}</li>
+          </ul>
+          <p><small>ID: ${data.id} • ${data.created_at}</small></p>
+        `.trim(),
+        reply_to: row.referrer_email || undefined,
+      });
+    }
+  } catch {
+    /* ignore email errors */
+  }
+
+  return res.status(201).json({ id: data.id, created_at: data.created_at });
+}
