@@ -14,10 +14,19 @@ import { AwardsLogoMarquee } from "../components/awards/AwardsLogoMarquee";
 import { AwardsGalleryStrip } from "../components/awards/AwardsGalleryStrip";
 import { PhotoMosaic } from "../components/awards/PhotoMosaic";
 import AwardsCTA from "../components/awards/AwardsCTA";
+import SEO from "../components/SEO"; // ✅ import SEO
 
 export default function AwardsPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* ✅ SEO Meta Tags */}
+      <SEO
+        title="Awards & Recognition"
+        description="Discover M&D Care’s award-winning achievements, celebrating excellence in adult social care across Wales — including British Care Awards, Care Employer of the Year, and Welsh Veteran Awards."
+        path="/awards"
+        image="/images/company/MD_Logo_Large.png"
+      />
+
       {/* Hero (you can optionally add <ConfettiLayer /> inside the hero) */}
       <AwardsHero achievements={achievements} />
 

@@ -1,6 +1,7 @@
 import ServiceOverview from "../components/common/ServiceOverview";
 import HomesGrid from "../components/common/HomesGrid";
 import Icon from "../components/common/Icon";
+import SEO from "../components/SEO";
 
 import { specialistHomes } from "../data/specialist.index";
 import {
@@ -19,6 +20,13 @@ function SpecialistPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO
+        title="Specialist Care Services"
+        description="Learn about M&D Care’s specialist care services, supporting individuals with complex mental health, learning disabilities, and autism through personalised, evidence-based approaches."
+        path="/services/specialist-care"
+        // image optional — add later if you design an OG banner
+      />
+
       {/* Hero Section */}
       <section className="relative bg-primary-navy text-white py-20">
         <div className="relative max-w-7xl mx-auto px-6 text-center">

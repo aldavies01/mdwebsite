@@ -6,7 +6,8 @@ export const supportedLivingDetails = {
     type: "Supported Living Service",
     regulatorRatingLabel: "CIW",
     rating: "Awaiting Inspection",
-
+    seoDescription:
+      "Community-based supported living helping individuals live independently with flexible staff support. Person-centred care promoting choice & confidence.",
     description:
       "Community-based supported living designed to help individuals live independently with flexible staff support as needed.",
     longDescription:
@@ -44,7 +45,8 @@ export const supportedLivingDetails = {
     type: "Supported Living Service",
     regulatorRatingLabel: "CIW",
     rating: "Awaiting Inspection",
-
+    seoDescription:
+      "Self-contained supported living accommodation with flexible, goal-focused staff support. Calm environment building confidence & independence.",
     description:
       "Self-contained supported living accommodation with flexible, goal-focused staff support.",
     longDescription:
@@ -81,7 +83,8 @@ export const supportedLivingDetails = {
     type: "Supported Living Service",
     regulatorRatingLabel: "CIW",
     rating: "Awaiting Inspection",
-
+    seoDescription:
+      "Community-focused supported living with consistent staff support. Person-centred care encouraging independence, choice & safety in own accommodation.",
     description:
       "Community-based supported living with consistent staff on hand when needed.",
     longDescription:
@@ -118,7 +121,8 @@ export const supportedLivingDetails = {
     type: "Supported Living Service",
     regulatorRatingLabel: "CIW",
     rating: "Awaiting Inspection",
-
+    seoDescription:
+      "Safe, supportive accommodation fostering life skills & independence. Structured environment focused on wellbeing, social inclusion & personal goals.",
     description:
       "Safe, supportive accommodation designed to foster life skills and independence.",
     longDescription:
@@ -155,7 +159,8 @@ export const supportedLivingDetails = {
     type: "Supported Living Service",
     regulatorRatingLabel: "CIW",
     rating: "Awaiting Inspection",
-
+    seoDescription:
+      "Supported living blending privacy with flexible staff support. Self-contained accommodation promoting independence & community participation.",
     description:
       "Supported living that blends privacy with responsive, flexible staff support.",
     longDescription:
@@ -192,7 +197,8 @@ export const supportedLivingDetails = {
     type: "Supported Living Service",
     regulatorRatingLabel: "CIW",
     rating: "Awaiting Inspection",
-
+    seoDescription:
+      "Calm, structured supported living with skilled staff available when needed. Promoting independence, personal growth & community participation.",
     description:
       "A calm, structured supported living environment with skilled staff available when needed.",
     longDescription:

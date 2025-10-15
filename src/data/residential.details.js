@@ -92,6 +92,8 @@ export const residentialDetails = {
         relationship: "Resident",
       },
     ],
+    seoDescription:
+      "Croft House in Llanelli provides self-contained flats and 24/7 person-centred support, helping adults live independently in a safe, welcoming environment.",
   },
 
   "rotherslade-bay": {
@@ -105,6 +107,8 @@ export const residentialDetails = {
 
     capacity: "6 residents",
     established: "2009",
+    seoDescription:
+      "Rotherslade House offers personalised residential support in a calm coastal setting near Swansea, promoting wellbeing, independence, and community inclusion.",
 
     description:
       "A residential service situated in the picturesque coastal area of Rotherslade, Swansea, providing a safe and supportive environment for adults with mental health needs. The service offers a homely setting with easy access to Swansea town centre and the scenic Mumbles.",
@@ -199,6 +203,8 @@ export const residentialDetails = {
     // email: "crofthouse@manddcare.co.uk",
     regulatorRatingLabel: "CIW",
     rating: "Awaiting Inspection",
+    seoDescription:
+      "Granville Court in Morriston, Swansea provides person-centred residential care that builds independence, daily living skills, and community participation.",
 
     capacity: "7 flats containing 9 single rooms",
     established: "2014",
@@ -300,6 +306,8 @@ export const residentialDetails = {
 
     capacity: "9 single rooms",
     established: "2009",
+    seoDescription:
+      "The Elms near Carmarthen offers calm, person-centred residential care that builds life skills, independence, and community connections.",
 
     description:
       "A residential service located in the peaceful village of Foelgastell, near Carmarthen. The Elms provides a supportive and homely environment for adults with mental health needs, encouraging independence and personal growth.",
@@ -402,6 +410,8 @@ export const residentialDetails = {
 
     capacity: "4 Single Rooms",
     established: "2022",
+    seoDescription:
+      "Gelynnen in Pencader provides calm, countryside residential support that promotes independence, daily living skills, and personal development.",
 
     description:
       "A residential service set in a peaceful countryside location, providing person-centred support for adults with mental health needs. Gelynnen offers a calm, homely environment that encourages independence and wellbeing.",
@@ -508,6 +518,8 @@ export const residentialDetails = {
 
     description:
       "A coastal residential service offering stunning sea views and a supportive, homely environment for adults with mental health needs. Ceiriosen Bren promotes independence, wellbeing, and community inclusion in a peaceful seaside setting.",
+    seoDescription:
+      "Ceiriosen Bren near Llandysul offers calm coastal residential care with modern facilities, sea views, and personalised support for adults with mental health needs.",
 
     longDescription:
       "Ceiriosen Bren is a residential care service located near the coast, providing both ground floor and upper-level accommodation with modern facilities and beautiful sea views. The home offers a calm, supportive environment for adults with mental health needs, encouraging independence and personal development through structured support and everyday activities. With spacious communal areas, private bathrooms, and access to the internet, residents can enjoy a balance of comfort, privacy, and social connection. Its seaside location provides opportunities for relaxation, reflection, and meaningful engagement with the local community.",
@@ -608,6 +620,8 @@ export const residentialDetails = {
 
     capacity: "4 Single Bedrooms",
     established: "2022",
+    seoDescription:
+      "Ty Pin Coed in Kidwelly provides supportive residential care with access to outdoor space and activities that encourage confidence, independence, and wellbeing.",
 
     description:
       "A residential service set in a peaceful location, offering a supportive environment for adults with mental health needs. Ty Pin Coed provides comfortable accommodation, access to outdoor spaces, and opportunities for active living and independence.",
@@ -711,6 +725,8 @@ export const residentialDetails = {
 
     capacity: "4 single rooms across 2 houses",
     established: "2009",
+    seoDescription:
+      "Llys Penpant near Swansea delivers person-centred residential care that builds independence and confidence, with great access to local amenities and transport.",
 
     description:
       "A residential service located near Swansea, providing a supportive and homely environment for adults with mental health needs. Llys Penpant promotes independence, wellbeing, and inclusion through personalised care and meaningful daily living.",

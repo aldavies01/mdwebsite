@@ -1,3 +1,5 @@
+import SEO from "../components/SEO";
+
 function OurPeoplePage() {
   // Senior Management Team data
   const managementTeam = [
@@ -93,6 +95,12 @@ function OurPeoplePage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO
+        title="Our People"
+        description="Meet the dedicated team behind M&D Care. Our people are passionate professionals committed to delivering person-centred support and exceptional care across Wales."
+        path="/about/people"
+        // image optional — add later if you design an OG banner
+      />
       {/* Hero Section */}
       {/* Hero Section — styled like QualityHero */}
       <section className="relative bg-primary-navy text-white py-16 lg:py-20 overflow-hidden">

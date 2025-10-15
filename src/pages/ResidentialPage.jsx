@@ -1,11 +1,8 @@
 import ServiceOverview from "../components/common/ServiceOverview";
 import HomesGrid from "../components/common/HomesGrid";
 import Icon from "../components/common/Icon";
-
-// use the derived list (no duplication)
+import SEO from "../components/SEO";
 import { residentialHomes } from "../data/residential.index";
-
-// page copy/meta lives here
 import {
   serviceOverviewData as overviewData,
   homesGridData,
@@ -22,6 +19,13 @@ function ResidentialPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO
+        title="Residential Services"
+        description="Explore M&D Care’s residential services, providing safe, supportive, and person-centred environments for individuals with complex needs across Wales."
+        path="/services/residential"
+        // image optional — add later if you design an OG banner
+      />
+
       {/* Hero Section */}
       <section className="relative bg-primary-navy text-white py-20">
         <div className="relative max-w-7xl mx-auto px-6 text-center">

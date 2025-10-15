@@ -5,6 +5,7 @@ import ValuesDetail from "../components/values/ValuesDetail";
 import ValuesQuote from "../components/values/ValuesQuote";
 import ValuesCTA from "../components/values/ValuesCTA";
 import ValuesSlideshow from "../components/values/ValuesSlideshow";
+import SEO from "../components/SEO";
 
 function ValuesPage() {
   // Keep your existing values data (icons can stay as inline SVGs for now)
@@ -151,6 +152,13 @@ function ValuesPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO
+        title="Our Values"
+        description="Discover the core values that guide M&D Care — compassion, integrity, and respect. Learn how our values shape every aspect of the care and support we provide across Wales."
+        path="/about/values"
+        // image optional — add later if you design an OG banner
+      />
+
       <ValuesHero values={values} />
       {/* <ValuesGrid values={values} /> */}
       <ValuesDetail values={values} />

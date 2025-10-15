@@ -9,6 +9,7 @@ import StaffTestimonial from "../components/dayInLife/StaffTestimonial";
 import WhyYoullLoveIt from "../components/dayInLife/WhyYoullLoveIt";
 import DayInLifeCTA from "../components/dayInLife/DayInLifeCTA";
 import { ShiftProvider } from "../components/dayInLife/ShiftContext";
+import SEO from "../components/SEO";
 
 function DayInTheLifePage() {
   return (

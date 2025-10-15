@@ -2,17 +2,12 @@
 import ServiceOverview from "../components/common/ServiceOverview";
 import HomesGrid from "../components/common/HomesGrid";
 import Icon from "../components/common/Icon";
-
-// ❗ Create these to mirror your residential data files
-// e.g. src/data/supported-living.index.js -> export const supportedLivingHomes = [...]
 import { supportedLivingHomes } from "../data/supported-living.index";
-// e.g. src/data/supported-living.meta.js -> export const serviceOverviewData, homesGridData
 import {
   serviceOverviewData as overviewDataRaw,
   homesGridData,
 } from "../data/supported-living.meta";
-
-// Keep using your existing details to populate hero text, etc.
+import SEO from "../components/SEO";
 import { hero, keyFeatures, cta } from "../data/supported-living.meta";
 
 export default function SupportedLivingPage() {
@@ -40,6 +35,13 @@ export default function SupportedLivingPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO
+        title="Supported Living Services"
+        description="Discover M&D Care’s supported living services, empowering individuals to live independently with personalised support in safe and inclusive community settings across Wales."
+        path="/services/supported-living"
+        // image optional — add later if you design an OG banner
+      />
+
       {/* Hero Section — aligned with Residential */}
       <section className="relative bg-primary-navy text-white py-20">
         <div className="relative max-w-7xl mx-auto px-6 text-center">

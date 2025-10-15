@@ -1,3 +1,5 @@
+import SEO from "../components/SEO";
+
 function CommitmentsPage() {
   const commitments = [
     {

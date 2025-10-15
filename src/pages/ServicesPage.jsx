@@ -5,12 +5,20 @@ import AdditionalServiceCard from "../components/services/AdditionalServiceCard"
 import ServicesCTA from "../components/services/ServicesCTA";
 import MediaCard from "../components/common/MediaCard";
 import Icon from "../components/common/Icon";
+import SEO from "../components/SEO";
 
 import { services, additionalServices } from "../data/services.constants";
 
 export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO
+        title="Our Services"
+        description="Discover the full range of services offered by M&D Care, including residential care, supported living, and specialist care support — delivering person-centred care across Wales."
+        path="/services"
+        // image optional — add later if you design an OG banner
+      />
+
       {/* HERO */}
       <ServicesHero />
 

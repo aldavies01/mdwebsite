@@ -1,3 +1,4 @@
+import SEO from "../components/SEO";
 import HeroCarousel from "../components/layout/HeroCarousel";
 import CompanyOverview from "../components/common/CompanyOverview";
 import ServicesSection from "../components/common/ServicesSection";
@@ -10,6 +11,13 @@ import WhyMDCare from "../components/common/WhyMDCare";
 function HomePage() {
   return (
     <>
+      <SEO
+        title="Home"
+        description="Specialist adult social care across Wales."
+        path="/"
+        image="/images/company/MD_Logo_Large.png"
+      />
+
       {/* <HeroCarousel /> */}
       <HeroSectionTest />
       {/* Cards first (no bottom padding) */}
@@ -24,40 +32,7 @@ function HomePage() {
         ]}
       />
 
-      <WhyMDCare
-        // items={[
-        //   {
-        //     img: "/images/stock/stock-1.jpg",
-        //     alt: "Croft House residential home",
-        //     reason: "Specialist, person-centred care",
-        //     text: "PBS-led support and outcomes that matter to the individual.",
-        //     tags: ["PBS", "Co-production"],
-        //   },
-        //   {
-        //     img: "/images/stock/stock-2.jpg",
-        //     alt: "Supported Living lounge",
-        //     reason: "Independence first",
-        //     text: "Skill-building and community connection at the person’s pace.",
-        //     tags: ["Skills", "Community"],
-        //   },
-        //   {
-        //     img: "/images/stock/stock-3.jpg",
-        //     alt: "Community Outreach",
-        //     reason: "Joined-up working",
-        //     text: "We partner with families, commissioners and clinicians.",
-        //     tags: ["Partnership", "Continuity"],
-        //   },
-        //   {
-        //     img: "/images/stock/stock-4.jpg",
-        //     alt: "Our professional care team",
-        //     reason: "Experienced teams",
-        //     text: "Values-driven staff with continuous training and supervision.",
-        //     tags: ["Training", "Safeguarding"],
-        //   },
-        // ]}
-        ctaHref="/about"
-        ctaText="See how we work"
-      />
+      <WhyMDCare ctaHref="/about" ctaText="See how we work" />
       {/* Map next (no top padding) */}
       <ServicesSection showCards={false} showMap={true} topPadding={true} />
       <CompanyOverview />

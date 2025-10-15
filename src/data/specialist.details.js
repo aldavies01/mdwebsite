@@ -5,6 +5,8 @@ export const specialistDetails = {
     slug: "ty-hiraeth",
     name: "Ty Hiraeth",
     address: "Ty Hiraeth, Bryn Road, Penygroes, SA14 7PW",
+    seoDescription:
+      "Specialist residential care in Penygroes for adults with complex needs. Safe, structured environment promoting stability, independence & personal growth.",
     description:
       "A specialist residential service in Penygroes providing high-quality support for adults with complex needs. Ty Hiraeth offers a safe, structured environment designed to promote stability, independence, and personal growth.",
 
@@ -94,6 +96,8 @@ export const specialistDetails = {
     slug: "ty-richards",
     name: "Ty Richards",
     address: "Ty Richards, Bryn Road, Penygroes, SA14 7PW",
+    seoDescription:
+      "Residential care in Penygroes for adults with learning disabilities & autism. Self-contained flats with personalized support promoting independence.",
     description:
       "A residential service located in Penygroes, providing personalised support for adults with a range of needs. Ty Richards offers comfortable, self-contained accommodation and a supportive environment that promotes independence and wellbeing.",
 
@@ -183,6 +187,8 @@ export const specialistDetails = {
     slug: "tegfan",
     name: "Tegfan",
     address: "Arthur Street, Ammanford, SA18 2DR",
+    seoDescription:
+      "Spacious residential service in Ammanford offering individual flats & person-centred support for adults with complex needs. Modern facilities & communal spaces.",
     description:
       "A spacious residential service located in Ammanford, offering person-centred support for adults with a range of needs. Tegfan provides individual flats, shared communal areas, and adaptive facilities that promote independence, comfort, and inclusion.",
 
@@ -276,6 +282,8 @@ export const specialistDetails = {
     slug: "ynystawe-lodge",
     name: "Ynystawe Lodge",
     address: "Park Rd, Ynysforgan, Swansea, SA6 5AP",
+    seoDescription:
+      "Residential care near Swansea for adults with complex needs. Comfortable accommodation with adaptable facilities promoting independence & wellbeing.",
     description:
       "A residential service based near Swansea, providing tailored support for adults with a variety of needs. Ynystawe offers comfortable accommodation, adaptable facilities, and a welcoming environment that promotes independence and personal growth.",
 

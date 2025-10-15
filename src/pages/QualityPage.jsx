@@ -1,4 +1,5 @@
 import React from "react";
+import SEO from "../components/SEO";
 import Icon from "../components/common/Icon";
 import {
   qualityHero,
@@ -567,6 +568,12 @@ function QualityCommitment() {
 export default function QualityPage() {
   return (
     <main className="isolate">
+      <SEO
+        title="Quality & Assurance"
+        description="Discover how M&D Care maintains the highest standards through regular audits, impact reports, and continuous improvement initiatives — ensuring exceptional care across all our services."
+        path="/about/quality"
+        // image optional — add later if you design an OG banner
+      />
       <QualityHero />
       <InspectionOutcomes />
       <QualityImprovement />

@@ -1,5 +1,6 @@
 // src/pages/NewDevelopmentsPage.jsx
 import { useState } from "react";
+import SEO from "../components/SEO";
 import Icon from "../components/common/Icon";
 import {
   hero,
@@ -44,6 +45,13 @@ export default function NewDevelopmentsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO
+        title="New Developments"
+        description="Stay up to date with M&D Care’s latest service developments and upcoming projects. Discover how we’re expanding our specialist care across Wales to support more individuals and communities."
+        path="/services/new-developments"
+        // image optional — add later if you design an OG banner
+      />
+
       {/* Hero */}
       <section className="relative bg-primary-navy text-white py-20 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
